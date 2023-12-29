@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Jost:ital,wght@0,400;0,700;1,500&display=swap');
+
+:root {
+  /* Primary color for the application */
+  --primary-color: hsl(165, 60%, 40%);
+
+  /* Colors for text elements */
+  --title-color: hsl(0, 0%, 100%);
+  --text-color: hsl(0, 0%, 92%);
+
+  /* Background colors */
+  --bg-color: hsl(216, 18%, 16%);
+  --bg-color-alt: hsl(213, 10%, 21%);
+
+  /* Color for containers */
+  --container-color: hsl(217, 18%, 14%);
+
+  /* Border color */
+  --border-color: hsl(210, 2%, 65%);
+
+  /* Gradients for backgrounds */
+  --first-gradient: linear-gradient(
+    0deg,
+    var(--bg-color-alt) 0%,
+    var(--bg-color) 100%
+  );
+
+  --second-gradient: linear-gradient(
+    180deg,
+    var(--bg-color-alt) 0%,
+    var(--bg-color) 100%
+  );
+
+  --second-gradient: linear-gradient(
+    180deg,
+    var(--bg-color) 0%,
+    var(--bg-color) 100%
+  );
+
+  --body-font: 'Jost', sans-serif;
+
+  --second-font: 'Caveat', cursive;
+
+  --biggest-font-size: 90px;
+  --h1-font-size: 44px;
+  --h2-font-size: 30px;
+  --h3-font-size: 28px;
+  --h4-font-size: 24px;
+  --h5-font-size: 22px;
+  --largest-font-size: 21px;
+  --larger-font-size: 20px;
+  --large-font-size: 18px;
+  --normal-font-size: 16px;
+  --small-font-size: 15px;
+  --smaller-font-size: 14px;
+  --tiny-font-size: 13px;
+
+
+  --shadow: 5px 5px rgb(255 255 255 / 10%);
+
+  --transition: cubic-bezier(0.3, 0, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button,
+input,
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--title-color);
+  font-weight: 700;
+}
+
+ul {
+  list-style: none;
+}
+
+p {
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+}
+
+input,
+textarea,
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}
