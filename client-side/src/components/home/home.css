@@ -1,0 +1,36 @@
+.home {
+    background-color: var(--first-gradient);
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
+}
+
+.home__container {
+    width: 100%;
+}
+
+.home__subtitle,
+.home__job {
+    font-weight: 700;
+}
+
+.home__subtitle,
+.home__job span {
+    font-size: var(--small-font-size);
+}
+
+.home__subtitle span,
+.home__title span {
+    color: var(--primary-color);
+}
+
+.home__job b {
+    font-family: var(--second-font);
+    font-size: var(--h2-font-size);
+    margin-left: 10px;
+}
+
+.home__title {
+    font-size: var(--biggest-font-size);
+    text-shadow: 2px 2px hsl(0, 0%, 0%), -2px 2px hsl(0, 0%, 0%), 2px -2px hsl(0, 0%, 0%), -2px -2px hsl(0, 0%, 0%), 5px 5px 0 rgb(0 0 0 /20%);
+}
