@@ -57,17 +57,20 @@ const Home = () => {
 
                     <p className='home__data home__data-two'>
                         <span className='text-lg'>
-                            50
+                            50 <b>+</b>
                         </span>
 
                         <span className='text-sm text-cs'>
                             Completed <span>Projects</span>
                         </span>
                     </p>
+                    <img src={shapeOne} alt='' className='shape shape__1' />
+                    <img src={shapeTwo} alt='' className='shape shape__2' />
+                    <img src={shapeTwo} alt='' className='shape shape__3' />
                 </div>
 
                 <p className='home__text'>
-                Tech Enthusiast with vibrant vibes. I code with the enthusiasm—no coffee required! Sci-fi movies are my escape pods, and books are my DIY movies – I&apos;m the director in my mind cinema. Dream? Build my own tech company, but first, a stint in the tech trenches. Jamming to 21 Pilots, Imagine Dragons, and secretly wishing Sia could narrate my life. Laughter is my code&apos;s best friend—keeping it nerdy & nice!
+                Tech Enthusiast coding with pure zest. Dream? Having my own startup—some day. Sci-fi movies are my escape pods, and books are my DIY movies. Jamming to 21 Pilots, Imagine Dragons, and secretly wishing Sia could narrate my life.
                 </p>
 
                 <div className='home__socials'>

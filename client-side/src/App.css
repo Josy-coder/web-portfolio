@@ -41,7 +41,7 @@
 
   --second-font: 'Caveat', cursive;
 
-  --biggest-font-size: 80px;
+  --biggest-font-size: 70px;
   --h1-font-size: 44px;
   --h2-font-size: 30px;
   --h3-font-size: 28px;
@@ -161,4 +161,11 @@ img {
   transform: scale(1);
   filter: blur(0);
   opacity: 1;
+}
+
+.shape {
+  position: absolute;
+  filter: invert(1);
+  opacity: 0.6;
+
 }
