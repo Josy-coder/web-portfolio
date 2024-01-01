@@ -31,7 +31,7 @@
     var(--bg-color) 100%
   );
 
-  --second-gradient: linear-gradient(
+  --third-gradient: linear-gradient(
     180deg,
     var(--bg-color) 0%,
     var(--bg-color) 100%
@@ -135,6 +135,7 @@ img {
   display: grid;
   place-items: center;
   position: relative;
+  z-index: 1;
 }
 
 .btn {
@@ -167,5 +168,34 @@ img {
   position: absolute;
   filter: invert(1);
   opacity: 0.6;
+
+}
+
+.section {
+  padding-bottom: 220px;
+}
+
+.section__title,
+.section__subtitle {
+  text-align: center;
+}
+
+.section__title {
+  font-size: var(--h1-font-size);
+}
+
+.section__subtitle {
+  color: var(--primary-color);
+  font-size: var(--smaller-font-size);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.section__subtitle span {
+  font-family: var(--second-font);
+  color: var(--title-color);
+  font-size: var(--h3-font-size);
+  text-transform: capitalize;
+  margin-left: 10px;
 
 }
