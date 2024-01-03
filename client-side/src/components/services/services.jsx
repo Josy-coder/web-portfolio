@@ -1,4 +1,7 @@
 import './services.css';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/react';
 import { services } from '../../Data';
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -37,7 +40,7 @@ const Services = () => {
         >
             {services.map(({name,title, description}, index) => {
                 return (
-                    <div className='services__item card card-one'>
+                    <SwiperSlider className='services__item card card-one'>
                         <span className='services__subtitle text-cs'>
                             {name}
                         </span>
@@ -55,7 +58,7 @@ const Services = () => {
                            <FaArrowRight className='link__icon'></FaArrowRight>
                         </a>
 
-                    </div>
+                    </SwiperSlider>
                 )
             })}
         </div>
