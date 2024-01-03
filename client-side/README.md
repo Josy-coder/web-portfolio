@@ -46,7 +46,7 @@ To start the development server, run:
 npm run dev
 ```
 
-Open http://localhost:3000 to view it in the browser. The page will reload if you make edits.
+Open http://localhost:5173 to view it in the browser. The page will reload if you make edits.
 
 ## Contributing
 
@@ -66,4 +66,4 @@ None at the moment.
 
 Josy-coder - josekecha@keemail.me
 
-Project Link: [https://github.com/your_username_/Project-Name](https://github.com/Josy-coder/web-portfolio)
+Project Link: [https://github.com/Josy-coder/web-portfolio](https://github.com/Josy-coder/web-portfolio)
