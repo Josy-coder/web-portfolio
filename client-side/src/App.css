@@ -189,6 +189,7 @@ img {
   font-size: var(--smaller-font-size);
   text-transform: uppercase;
   font-weight: 700;
+  margin-bottom: 60px;
 }
 
 .section__subtitle span {
@@ -197,8 +198,6 @@ img {
   font-size: var(--h3-font-size);
   text-transform: capitalize;
   margin-left: 10px;
-  margin-bottom: 60px;
-
 }
 
 .card {
