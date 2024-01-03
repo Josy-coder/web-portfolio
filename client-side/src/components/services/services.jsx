@@ -23,17 +23,17 @@ const Services = () => {
             slidesPerView={1}
             spaceBetween={10}
             breakpoints={{
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
+                540: {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
                 },
                 768: {
-                    slidesPerView: 4,
-                    spaceBetween: 40,
+                    slidesPerView: 2,
+                    spaceBetween: 30,
                 },
-                1024: {
-                    slidesPerView: 5,
-                    spaceBetween: 50,
+                1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
                 },
             }}
             modules={[Pagination]}
@@ -50,7 +50,7 @@ const Services = () => {
                             {title}
                         </h3>
 
-                        <p className='serices__description'>
+                        <p className='services__description'>
                             {description}
                         </p>
 
