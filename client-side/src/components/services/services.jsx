@@ -1,11 +1,11 @@
-import './services.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import { services } from '../../Data';
 import { FaArrowRight } from 'react-icons/fa';
-import shapeTwo from '../../assets/shape-2.png'
+import shapeTwo from '../../assets/shape-2.png';
+import './services.css';
 
 
 

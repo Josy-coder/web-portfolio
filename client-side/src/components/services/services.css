@@ -38,7 +38,7 @@
     content: '';
     position: absolute;
     right: 0;
-    top: 50%;
+    top: 46%;
     transform: translateY(50%);
     height: 2px;
     width: 100%;
@@ -48,4 +48,20 @@
 .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
     border: 2px solid var(--title-color);
     background-color: var(--container-color);
+    z-index: 1;
+    position: relative;
+    opacity: 1;
+    margin: 0;
+    transition:all 0.3s var(--transition);
+}
+
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet:not(:last-child) {
+    margin-right: 20px;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet-active {
+    background-color: var(--primary-color);
+    width: 13px;
+    height: 13px;
+    top: 2px;
 }
