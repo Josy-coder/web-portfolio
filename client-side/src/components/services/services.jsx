@@ -1,4 +1,8 @@
 import './services.css';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
 import { services } from '../../Data';
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -12,10 +16,32 @@ const Services = () => {
             My <span>Services</span>
         </p>
 
-        <div className='services__container container'>
+        <Swiper
+            pagination={{
+                clickable: true
+            }}
+            slidesPerView={1}
+            spaceBetween={10}
+            breakpoints={{
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 40,
+                },
+                1024: {
+                    slidesPerView: 5,
+                    spaceBetween: 50,
+                },
+            }}
+            modules={[Pagination]}
+            className='services__container container mySwiper'
+        >
             {services.map(({name,title, description}, index) => {
                 return (
-                    <div className='services__item card card-one'>
+                    <SwiperSlide key={index} className='services__item card card-one'>
                         <span className='services__subtitle text-cs'>
                             {name}
                         </span>
@@ -33,10 +59,10 @@ const Services = () => {
                            <FaArrowRight className='link__icon'></FaArrowRight>
                         </a>
 
-                    </div>
+                    </SwiperSlide>
                 )
             })}
-        </div>
+        </Swiper>
     </section>
   )
 }
