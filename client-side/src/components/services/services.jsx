@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import { services } from '../../Data';
 import { FaArrowRight } from 'react-icons/fa';
+import shapeTwo from '../../assets/shape-2.png'
 
 
 
@@ -46,7 +47,7 @@ const Services = () => {
                             {name}
                         </span>
 
-                        <h3 className='services__item title'>
+                        <h3 className='services__title title'>
                             {title}
                         </h3>
 
@@ -58,6 +59,8 @@ const Services = () => {
                            See Pricing
                            <FaArrowRight className='link__icon'></FaArrowRight>
                         </a>
+
+                        <img src={shapeTwo} alt='' className='shape c__shape'/>
 
                     </SwiperSlide>
                 )
