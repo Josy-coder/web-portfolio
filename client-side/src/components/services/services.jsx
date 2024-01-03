@@ -1,7 +1,8 @@
 import './services.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
 import { services } from '../../Data';
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -40,7 +41,7 @@ const Services = () => {
         >
             {services.map(({name,title, description}, index) => {
                 return (
-                    <SwiperSlider className='services__item card card-one'>
+                    <SwiperSlide key={index} className='services__item card card-one'>
                         <span className='services__subtitle text-cs'>
                             {name}
                         </span>
@@ -58,10 +59,10 @@ const Services = () => {
                            <FaArrowRight className='link__icon'></FaArrowRight>
                         </a>
 
-                    </SwiperSlider>
+                    </SwiperSlide>
                 )
             })}
-        </div>
+        </Swiper>
     </section>
   )
 }
