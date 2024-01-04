@@ -1,5 +1,5 @@
 .skills {
-    background-color: var(--third-gradient);
+    background-image: var(--third-gradient);
 }
 
 .skills__container {
@@ -37,17 +37,18 @@
 }
 
 .skills__bar,
-.skills_percentage {
+.skills__percentage {
     height: 2px;
 }
 
 .skills__bar {
-    background: rgb(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .skills__percentage {
     display: block;
     background-color: var(--primary-color);
+    position: relative;
 }
 
 .skills__percentage span {
@@ -59,4 +60,5 @@
     border-radius: 50%;
     position: absolute;
     right: 0;
+    top: -12px;
 }

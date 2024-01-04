@@ -89,54 +89,106 @@ export const services = [
 ];
 
 export const skills = [
+  // Frontend Development
   {
     id: 1,
-    name: 'PHP',
-    percentage: 85,
+    name: 'JavaScript',
+    percentage: 90,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Proficient in both Vanilla JS and frameworks like React, Next.js and React Native.',
   },
 
   {
     id: 2,
-    name: 'JavaScript',
-    percentage: 75,
+    name: 'TypeScript',
+    percentage: 80,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Experience in writing TypeScript code, particularly in Next.js and Vite.',
   },
 
   {
     id: 3,
-    name: 'WordPress',
-    percentage: 90,
+    name: 'Testing',
+    percentage: 85,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Proficient in writing tests for frontend applications using Jest and React Testing Library.',
   },
 
   {
     id: 4,
-    name: 'Python',
-    percentage: 75,
+    name: 'UI/UX Design',
+    percentage: 90,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Skilled in UI/UX design using tools such as Adobe XD, Figma, Photoshop, and UXpin.',
   },
 
   {
     id: 5,
-    name: 'React',
-    percentage: 70,
+    name: 'WordPress',
+    percentage: 80,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Experience in development with WordPress, including theme customization and integration.',
   },
 
   {
     id: 6,
-    name: 'Adobe XD',
+    name: 'Webflow',
+    percentage: 75,
+    description:
+      'Proficient in using Webflow for designing and building responsive websites with a visual editor.',
+  },
+
+  // Backend Development
+  {
+    id: 7,
+    name: 'Golang',
     percentage: 80,
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Proficient in backend development using Golang, with expertise in building RESTful APIs.',
+  },
+
+  {
+    id: 8,
+    name: 'Python',
+    percentage: 80,
+    description:
+      'Experience in backend development using Python with the Django framework.',
+  },
+
+  {
+    id: 9,
+    name: 'Database',
+    percentage: 85,
+    description:
+      'Works with databases including MySQL, Postgres, and MongoDB for SQL and NoSQL storage.',
+  },
+
+  {
+    id: 10,
+    name: 'DB as a Service',
+    percentage: 75,
+    description:
+      'Experience in using DaaS platforms like Supabase, Pocketbase, and Neon with ORMs.',
+  },
+
+  // Additional Skills
+  {
+    id: 11,
+    name: 'Data Analysis',
+    percentage: 80,
+    description:
+      'Experience in data analysis using Python, Pandas, Numpy, and other relevant libraries.',
+  },
+
+  {
+    id: 12,
+    name: 'Soft Skills',
+    percentage: 95,
+    description:
+      'Possess a commitment to constant learning, effective communication, and teamwork.',
   },
 ];
+
 
 export const projects = [
   {
