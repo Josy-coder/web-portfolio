@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const List = ({list}) => {
+const List = ({list, filterItems}) => {
 
   const[active, setActive] = useState(0);
   return (
@@ -12,6 +12,7 @@ const List = ({list}) => {
             key={index}
             onClick={() => {
               setActive(index);
+              filterItems(category)
             }}
           >
             {category}

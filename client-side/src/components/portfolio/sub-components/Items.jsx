@@ -1,5 +1,6 @@
 import { FaArrowRight } from "react-icons/fa";
 import shapeTwo from '../../../assets/shape-2.png';
+import { motion } from 'framer-motion';
 
 const Items = ({projectItems}) => {
   return (
@@ -7,7 +8,15 @@ const Items = ({projectItems}) => {
     {projectItems.map((projectItem) => {
       const { id, img, category, title, description } = projectItem;
       return (
-        <div key={id} className='portfolio__items card card-two'>
+        <motion.div
+          layout
+          animate={{ opacity: 1, scale: 1 }}
+          initial={{opacity: 0.8, scale: 0.6 }}
+          exit={{ opacity: 0.8, scale: 0.6 }}
+          transition={{ duration: 0.3 }}
+          key={id}
+          className='portfolio__items card card-two'
+        >
 
           <div className='portfolio__img-wrapper'>
 
@@ -32,7 +41,7 @@ const Items = ({projectItems}) => {
 
           <img src={shapeTwo} alt='' className='shape c__shape'/>
 
-        </div>
+        </motion.div>
       )
     })}
     </>

@@ -29,6 +29,11 @@
     transition: all 0.3s var(--transition);
 }
 
+.active-work {
+    color: var(--primary-color);
+}
+
+.active-work::before,
 .portfolio__list-item:hover::before {
     width: 40px;
 
