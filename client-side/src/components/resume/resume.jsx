@@ -1,5 +1,5 @@
 import './resume.css'
-import './sub-components/Card'
+import Card from './sub-components/Card'
 import { cv } from '../../Data';
 
 const Resume = () => {
@@ -20,7 +20,46 @@ const Resume = () => {
                 </h3>
 
                 <div className='resume__items'>
+                    {cv.map((val, id) => {
+                        if (val.category === 'education') {
+                            return (
+                                <Card
+                                    key={id}
+                                    title={val.title}
+                                    subtitle={val.subtitle}
+                                    date={val.date}
+                                    description={val.description}
+                                />
 
+                            )
+
+                        }
+                    })}
+                </div>
+
+            </div>
+
+            <div className='resume__group'>
+                <h3 className='resume__heading'>
+                    Experience
+                </h3>
+
+                <div className='resume__items'>
+                    {cv.map((val, id) => {
+                        if (val.category === 'experience') {
+                            return (
+                                <Card
+                                    key={id}
+                                    title={val.title}
+                                    subtitle={val.subtitle}
+                                    date={val.date}
+                                    description={val.description}
+                                />
+
+                            )
+
+                        }
+                    })}
                 </div>
 
             </div>
