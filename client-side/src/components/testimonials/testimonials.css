@@ -1,15 +1,19 @@
+/* The .testimonials class sets the background image for the testimonials section */
 .testimonials {
     background-image: var(--third-gradient);
 }
 
+/* The .testimonials__container class centers the text within the testimonials container */
 .testimonials__container {
     text-align: center;
 }
 
+/* The .testimonial__header class sets the position of the testimonial header to relative */
 .testimonial__header {
     position: relative;
 }
 
+/* The .testimonial__img class styles the testimonial images */
 .testimonial__img {
     height: 180px;
     width: 100%;
@@ -19,6 +23,7 @@
     vertical-align: middle;
 }
 
+/* The .testimonial__icon class styles the testimonial icon */
 .testimonial__icon {
     position: absolute;
     top: 0;
@@ -29,15 +34,12 @@
     border-bottom-right-radius: 18px;
 }
 
-/*
-TODO: There is a testimonial image shows on the testimonial icon as a single small line
-when the icon should be covering that section
-*/
-
+/* The .testimonial__description class sets a minimum height for the testimonial description */
 .testimonial__description {
     min-height: 110px;
 }
 
+/* The .testimonial__name class styles the testimonial name */
 .testimonial__name {
     font-size: var(--largest-font-size);
     margin-top: 30px;
