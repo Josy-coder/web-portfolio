@@ -1,4 +1,5 @@
 import { FaArrowRight, FaCheck } from "react-icons/fa";
+import shapeTwo from '../../assets/shape-2.png';
 import "./pricing.css";
 
 const Pricing = () => {
@@ -11,6 +12,45 @@ const Pricing = () => {
 
         <div className="prcing__container container grid">
             <div className="pricing__item card card-one">
+                <span className="pricing__subtitle text-cs">Freelancing</span>
+                <h3 className="pricing__price">
+                   259 <span>$</span> <em>Week</em>
+                </h3>
+
+                <p className="pricing__description">
+                    Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidiunt ut
+                </p>
+
+                <ul className="pricing__list">
+                    <li className="list__item">
+                        <FaCheck className="list__icon"></FaCheck>
+                        <span>Brand Design</span>
+                    </li>
+
+                    <li className="list__item">
+                        <FaCheck className="list__icon"></FaCheck>
+                        <span>Web Development</span>
+                    </li>
+
+                    <li className="list__item">
+                    <FaCheck className="list__icon"></FaCheck>
+                        <span>Advertising</span>
+                    </li>
+
+                    <li className="list__item">
+                        <del>Photography</del>
+                    </li>
+                </ul>
+
+                <a href="" className="btn pricing__btn">
+                    Download Quote
+                    <FaArrowRight className="pricing__btn-icon"></FaArrowRight>
+                </a>
+
+                <img src={shapeTwo} alt="" className="shape c__shape"/>
+            </div>
+
+            <div className="pricing__item card card-two">
                 <span className="pricing__subtitle text-cs">Hourly Basis</span>
                 <h3 className="pricing__price">
                    39 <span>$</span> <em>Hour</em>
@@ -45,8 +85,46 @@ const Pricing = () => {
                     <FaArrowRight className="pricing__btn-icon"></FaArrowRight>
                 </a>
 
+                <img src={shapeTwo} alt="" className="shape c__shape"/>
             </div>
 
+            <div className="pricing__item card card-three">
+                <span className="pricing__subtitle text-cs">Hourly Basis</span>
+                <h3 className="pricing__price">
+                   39 <span>$</span> <em>Hour</em>
+                </h3>
+
+                <p className="pricing__description">
+                    Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidiunt ut
+                </p>
+
+                <ul className="pricing__list">
+                    <li className="list__item">
+                        <FaCheck className="list__icon"></FaCheck>
+                        <span>Brand Design</span>
+                    </li>
+
+                    <li className="list__item">
+                        <FaCheck className="list__icon"></FaCheck>
+                        <span>Web Development</span>
+                    </li>
+
+                    <li className="list__item">
+                        <del>Advertising</del>
+                    </li>
+
+                    <li className="list__item">
+                        <del>Photography</del>
+                    </li>
+                </ul>
+
+                <a href="" className="btn pricing__btn">
+                    Download Quote
+                    <FaArrowRight className="pricing__btn-icon"></FaArrowRight>
+                </a>
+
+                <img src={shapeTwo} alt="" className="shape c__shape"/>
+            </div>
         </div>
     </section>
   )
