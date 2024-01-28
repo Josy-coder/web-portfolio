@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useMemo } from 'react';
 import profileImg from '../../assets/profile-img.png';
 import shapeOne from '../../assets/shape-1.png';

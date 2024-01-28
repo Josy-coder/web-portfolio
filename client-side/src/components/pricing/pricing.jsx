@@ -10,7 +10,7 @@ const Pricing = () => {
             My<span>Pricing Board</span>
         </p>
 
-        <div className="prcing__container container grid">
+        <div className="pricing__container container grid">
             <div className="pricing__item card card-one">
                 <span className="pricing__subtitle text-cs">Freelancing</span>
                 <h3 className="pricing__price">
