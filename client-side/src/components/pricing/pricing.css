@@ -15,6 +15,24 @@
     border: 2px solid var(--border-color);
 }
 
+.pricing__item-wrapper {
+    position: relative;
+}
+
+.pricing__label {
+    position: absolute;
+    top: -12px;
+    right: 40px;
+    z-index: 20;
+    background-color: var(--primary-color);
+    box-shadow: var(--shadow);
+    color: var(--title-color);
+    padding: 4px 16px;
+    border-radius: 26px;
+    font-size: var(--tiny-font-size);
+    font-weight: 700;
+}
+
 .pricing__subtitle {
     color: var(--title-color);
     font-size: var(--tiny-font-size);
@@ -80,10 +98,10 @@
     position: absolute;
     right: 30px;
     top: 50%;
-    transform: translateY(-50);
+    transform: translateY(-50%);
     transition: all 0.3s var(--transition);
 }
 
 .pricing__btn:hover .pricing__btn-icon {
-    
+    right: 35px;
 }

@@ -6,6 +6,7 @@ import Portfolio from './components/portfolio/portfolio';
 import Resume from './components/resume/resume';
 import Testimonials from './components/testimonials/testimonials';
 import Pricing from './components/pricing/pricing';
+import Blog from './components/blog/blog';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Resume />
       <Testimonials />
       <Pricing />
+      <Blog />
     </main>
   )
 }
