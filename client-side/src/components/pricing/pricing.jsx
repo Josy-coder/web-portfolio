@@ -10,122 +10,124 @@ const Pricing = () => {
             My<span>Pricing Board</span>
         </p>
 
-        <div className="pricing__container container grid">
-            <div className="pricing__item card card-one">
-                <span className="pricing__subtitle text-cs">Freelancing</span>
-                <h3 className="pricing__price">
-                   259 <span>$</span> <em>Week</em>
-                </h3>
+       <div className="pricing__container container grid">
+        <div className="pricing__item card card-one">
+            <span className="pricing__subtitle text-cs">Hourly Basis</span>
+            <h3 className="pricing__price">
+               39 <span>$</span> <em>Hour</em>
+            </h3>
 
-                <p className="pricing__description">
-                    Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidiunt ut
-                </p>
+            <p className="pricing__description">
+                Lorem ipsum dolor sitamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, Quis ipsum suspendisse ultrices gravida.
+            </p>
 
-                <ul className="pricing__list">
-                    <li className="list__item">
-                        <FaCheck className="list__icon"></FaCheck>
-                        <span>Brand Design</span>
-                    </li>
-
-                    <li className="list__item">
-                        <FaCheck className="list__icon"></FaCheck>
-                        <span>Web Development</span>
-                    </li>
-
-                    <li className="list__item">
+            <ul className="pricing__list">
+                <li className="list__item">
                     <FaCheck className="list__icon"></FaCheck>
-                        <span>Advertising</span>
-                    </li>
+                    <span>Brand Design</span>
+                </li>
 
-                    <li className="list__item">
-                        <del>Photography</del>
-                    </li>
-                </ul>
+                <li className="list__item">
+                    <FaCheck className="list__icon"></FaCheck>
+                    <span>Web Development</span>
+                </li>
 
-                <a href="" className="btn pricing__btn">
-                    Download Quote
-                    <FaArrowRight className="pricing__btn-icon"></FaArrowRight>
-                </a>
+                <li className="list__item">
+                    <del>Advertising</del>
+                </li>
 
-                <img src={shapeTwo} alt="" className="shape c__shape"/>
-            </div>
+                <li className="list__item">
+                    <del>Photography</del>
+                </li>
+            </ul>
 
-            <div className="pricing__item card card-two">
-                <span className="pricing__subtitle text-cs">Hourly Basis</span>
-                <h3 className="pricing__price">
-                   39 <span>$</span> <em>Hour</em>
-                </h3>
+            <a href="" className="btn pricing__Btn">
+                Start Project
+                <FaArrowRight className="pricing__btn-icon"></FaArrowRight>
+            </a>
 
-                <p className="pricing__description">
-                    Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidiunt ut
-                </p>
-
-                <ul className="pricing__list">
-                    <li className="list__item">
-                        <FaCheck className="list__icon"></FaCheck>
-                        <span>Brand Design</span>
-                    </li>
-
-                    <li className="list__item">
-                        <FaCheck className="list__icon"></FaCheck>
-                        <span>Web Development</span>
-                    </li>
-
-                    <li className="list__item">
-                        <del>Advertising</del>
-                    </li>
-
-                    <li className="list__item">
-                        <del>Photography</del>
-                    </li>
-                </ul>
-
-                <a href="" className="btn pricing__btn">
-                    Download Quote
-                    <FaArrowRight className="pricing__btn-icon"></FaArrowRight>
-                </a>
-
-                <img src={shapeTwo} alt="" className="shape c__shape"/>
-            </div>
-
-            <div className="pricing__item card card-three">
-                <span className="pricing__subtitle text-cs">Hourly Basis</span>
-                <h3 className="pricing__price">
-                   39 <span>$</span> <em>Hour</em>
-                </h3>
-
-                <p className="pricing__description">
-                    Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidiunt ut
-                </p>
-
-                <ul className="pricing__list">
-                    <li className="list__item">
-                        <FaCheck className="list__icon"></FaCheck>
-                        <span>Brand Design</span>
-                    </li>
-
-                    <li className="list__item">
-                        <FaCheck className="list__icon"></FaCheck>
-                        <span>Web Development</span>
-                    </li>
-
-                    <li className="list__item">
-                        <del>Advertising</del>
-                    </li>
-
-                    <li className="list__item">
-                        <del>Photography</del>
-                    </li>
-                </ul>
-
-                <a href="" className="btn pricing__btn">
-                    Download Quote
-                    <FaArrowRight className="pricing__btn-icon"></FaArrowRight>
-                </a>
-
-                <img src={shapeTwo} alt="" className="shape c__shape"/>
-            </div>
+            <img src={shapeTwo} alt="" className="shape c__shape" />
         </div>
+
+        <div className="pricing__item card card-one">
+            <span className="pricing__subtitle text-cs">Freelancing</span>
+            <h3 className="pricing__price">
+               259 <span>$</span> <em>Week</em>
+            </h3>
+
+            <p className="pricing__description">
+                Lorem ipsum dolor sitamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, Quis ipsum suspendisse ultrices gravida.
+            </p>
+
+            <ul className="pricing__list">
+                <li className="list__item">
+                    <FaCheck className="list__icon"></FaCheck>
+                    <span>Brand Design</span>
+                </li>
+
+                <li className="list__item">
+                    <FaCheck className="list__icon"></FaCheck>
+                    <span>Web Development</span>
+                </li>
+
+                <li className="list__item">
+                    <FaCheck className="list__icon"></FaCheck>
+                    <span>Advertising</span>
+                </li>
+
+                <li className="list__item">
+                    <del>Photography</del>
+                </li>
+            </ul>
+
+            <a href="" className="btn pricing__Btn">
+                Start Project
+                <FaArrowRight className="pricing__btn-icon"></FaArrowRight>
+            </a>
+
+            <img src={shapeTwo} alt="" className="shape c__shape" />
+        </div>
+
+        <div className="pricing__item card card-one">
+            <span className="pricing__subtitle text-cs">Full Time</span>
+            <h3 className="pricing__price">
+               1,249 <span>$</span> <em>Month</em>
+            </h3>
+
+            <p className="pricing__description">
+                Lorem ipsum dolor sitamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, Quis ipsum suspendisse ultrices gravida.
+            </p>
+
+            <ul className="pricing__list">
+                <li className="list__item">
+                    <FaCheck className="list__icon"></FaCheck>
+                    <span>Brand Design</span>
+                </li>
+
+                <li className="list__item">
+                    <FaCheck className="list__icon"></FaCheck>
+                    <span>Web Development</span>
+                </li>
+
+                <li className="list__item">
+                    <FaCheck className="list__icon"></FaCheck>
+                    <span>Advertising</span>
+                </li>
+
+                <li className="list__item">
+                    <FaCheck className="list__icon"></FaCheck>
+                    <span>Photography</span>
+                </li>
+            </ul>
+
+            <a href="" className="btn pricing__Btn">
+                Start Project
+                <FaArrowRight className="pricing__btn-icon"></FaArrowRight>
+            </a>
+
+            <img src={shapeTwo} alt="" className="shape c__shape" />
+        </div>
+       </div>
     </section>
   )
 }
