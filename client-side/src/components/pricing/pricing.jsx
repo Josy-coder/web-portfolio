@@ -41,7 +41,7 @@ const Pricing = () => {
                 </li>
             </ul>
 
-            <a href="" className="btn pricing__Btn">
+            <a href="" className="btn pricing__btn text-cs">
                 Start Project
                 <FaArrowRight className="pricing__btn-icon"></FaArrowRight>
             </a>
@@ -80,7 +80,7 @@ const Pricing = () => {
                 </li>
             </ul>
 
-            <a href="" className="btn pricing__Btn">
+            <a href="" className="btn pricing__btn text-cs">
                 Start Project
                 <FaArrowRight className="pricing__btn-icon"></FaArrowRight>
             </a>
@@ -120,7 +120,7 @@ const Pricing = () => {
                 </li>
             </ul>
 
-            <a href="" className="btn pricing__Btn">
+            <a href="" className="btn pricing__btn text-cs">
                 Start Project
                 <FaArrowRight className="pricing__btn-icon"></FaArrowRight>
             </a>
