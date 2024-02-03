@@ -6,7 +6,7 @@ import {
     FaRegUser,
     FaRegMap
 } from 'react-icons/fa';
-import { axios } from 'axios';
+import axios from 'axios';
 
 const Contact = () => {
     const [form, setForm] = useState({
@@ -16,23 +16,40 @@ const Contact = () => {
         message: '',
     });
 
-     const handleChange =(e) => {
+    const [submitStatus, setSubmitStatus] = useState('Send Message');
+
+    const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        setForm({...form, [name]: value});
-     };
+        setForm({ ...form, [name]: value });
+    };
 
-     const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setSubmitStatus('Sending...');
 
-        axios.post(
-            'https://sheet.best/api/sheets/048205eb-2e54-4d7c-ae88-3b0f40881995',
-            form
-        ).then((response) => {
+        try {
+            const response = await axios.post(
+                'https://sheets.googleapis.com/v4/spreadsheets/19y0t5cXAaV1gJri-ArSanR1qPCEbVxb7kUEBaf0v-Oo/values/contact_form?key=AIzaSyDz2Y8k5dyxTPxBuTw8u6BtI8DDyVVPbFk',
+                {
+                    range: 'Sheet1',
+                    majorDimension: 'ROWS',
+                    values: [Object.values(form)],
+                }
+            );
+
             console.log(response);
-        });
-     };
 
+            if (response.statusText === 'OK') {
+                setSubmitStatus('Message Sent!');
+            } else {
+                setSubmitStatus('Error! Try again.');
+            }
+        } catch (error) {
+            console.error(error);
+            setSubmitStatus('Error! Try again.');
+        }
+    };
 
   return (
     <section className='contact section' id='contact'>
@@ -80,7 +97,7 @@ const Contact = () => {
                 </div >
             </div>
 
-            <form className='contact__form'>
+            <form className='contact__form' onSubmit={handleSubmit}>
                 <div className='contact__form-group grid'>
                     <div className='contact__form-div'>
                         <label className='contact__form-tag text-cs'>
@@ -139,7 +156,7 @@ const Contact = () => {
                     <div className='contact__submit'>
                         <p>* Accept the terms and conditions.</p>
                         <button type='submit' className='btn text-cs'>
-                            Send Message
+                            {submitStatus}
                         </button>
                     </div>
             </form>
