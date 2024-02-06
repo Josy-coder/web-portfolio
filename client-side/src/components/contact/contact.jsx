@@ -29,19 +29,15 @@ const Contact = () => {
         setSubmitStatus('Sending...');
 
         try {
-            const response = await axios.post(
-                'https://sheets.googleapis.com/v4/spreadsheets/19y0t5cXAaV1gJri-ArSanR1qPCEbVxb7kUEBaf0v-Oo/values/contact_form?key=AIzaSyDz2Y8k5dyxTPxBuTw8u6BtI8DDyVVPbFk',
-                {
-                    range: 'Sheet1',
-                    majorDimension: 'ROWS',
-                    values: [Object.values(form)],
-                }
+            const response = await axios.post("https://sheet.best/api/sheets/df1897a0-5ef9-4bfc-9949-a114bf787632",
+            form
             );
 
             console.log(response);
 
-            if (response.statusText === 'OK') {
+            if (response.status === 200) {
                 setSubmitStatus('Message Sent!');
+                setForm({name: '', email: '', subject: '', message: ''})
             } else {
                 setSubmitStatus('Error! Try again.');
             }
