@@ -9,10 +9,12 @@ import Pricing from './components/pricing/pricing';
 import Blog from './components/blog/blog';
 import Contact from './components/contact/contact';
 import Footer from './components/footer/footer';
+import Header from './components/header/header';
 
 function App() {
   return (
     <main className="main">
+      <Header />
       <Home />
       <Services />
       <Skills />
