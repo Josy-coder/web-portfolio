@@ -6,24 +6,24 @@ import { useState } from 'react';
 
 
 const Header = () => {
-
     const [showMenu, setShowMenu] = useState(false);
-  return (
+
+    return (
     <header className='header'>
         <nav className='nav'>
-            <a href="" className='nav__log text-cs'>
+            <a href="" className='nav__logo text-cs'>
                 Joselyto
             </a>
 
             <div
-                className={`${showMenu ? 'nav__menu show-menu' : 'nav_menu'}`}
+                className={`${showMenu ? 'nav__menu show-menu' : 'nav__menu'}`}
             >
                 <div className='nav__data'>
                     <ul className='nav__list'>
                         {links.map(({name, path}, index) => {
                             return (
                                 <li className='nav__item' key={index}>
-                                    <a href={path} className="nav__link text-cs">
+                                    <a href={`#${path}`} className="nav__link text-cs">
                                         {name}
                                     </a>
                                 </li>
@@ -47,13 +47,13 @@ const Header = () => {
                 </div>
             </div>
 
-            <div className='nav__btns'>
-                <div className='theme_toggler'>
-                    <BsSun />
+            <div className="nav__btns">
+                <div className="theme_toggler">
+                    <BsSun size={20}/>
                 </div>
 
                 <div
-                    className='nav__toggle'
+                    className={`${showMenu ? 'nav__toggle animate-toggle' : 'nav__toggle'}`}
                     onClick={() => setShowMenu(!showMenu)}
                 >
                     <span></span>
