@@ -1,4 +1,4 @@
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaGithub } from "react-icons/fa";
 import shapeTwo from '../../../assets/shape-2.png';
 import { motion } from 'framer-motion';
 
@@ -35,7 +35,7 @@ const Items = ({projectItems}) => {
           </p>
 
           <a href="" className='link'>
-            See Pricing
+            See Code <FaGithub className="link__icon"></FaGithub>
             <FaArrowRight className='link__icon'></FaArrowRight>
           </a>
 

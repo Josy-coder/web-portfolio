@@ -5,6 +5,7 @@ import { BsSun, BsMoon } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-scroll';
 import { animateScroll } from 'react-scroll';
+import shapeOne from '../../assets/shape-1.png';
 
 
 const getStorageTheme = () => {
@@ -104,6 +105,10 @@ const Header = () => {
                             <FaTelegramPlane />
                         </a>
                     </div>
+                </div>
+
+                <div className='section__deco deco__left header__deco'>
+                    <img src={shapeOne} alt='' className='shape' />
                 </div>
             </div>
 
