@@ -1,4 +1,5 @@
 import { FaArrowRight, FaCheck } from "react-icons/fa";
+import shapeOne from '../../assets/shape-1.png';
 import shapeTwo from '../../assets/shape-2.png';
 import "./pricing.css";
 
@@ -41,8 +42,8 @@ const Pricing = () => {
                 </li>
             </ul>
 
-            <a href="" className="btn pricing__btn text-cs">
-                Start Project
+            <a href="#contact" className="btn pricing__btn text-cs">
+                Request A Quote
                 <FaArrowRight className="pricing__btn-icon"></FaArrowRight>
             </a>
 
@@ -82,8 +83,8 @@ const Pricing = () => {
                     </li>
                 </ul>
 
-                <a href="" className="btn pricing__btn text-cs">
-                    Start Project
+                <a href="#contact" className="btn pricing__btn text-cs">
+                    Request A Quote
                     <FaArrowRight className="pricing__btn-icon"></FaArrowRight>
                 </a>
 
@@ -123,8 +124,8 @@ const Pricing = () => {
                 </li>
             </ul>
 
-            <a href="" className="btn pricing__btn text-cs">
-                Start Project
+            <a href="#contact" className="btn pricing__btn text-cs">
+                Request A Quote
                 <FaArrowRight className="pricing__btn-icon"></FaArrowRight>
             </a>
 

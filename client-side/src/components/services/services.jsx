@@ -5,6 +5,7 @@ import { Pagination } from 'swiper/modules';
 import { services } from '../../Data';
 import { FaArrowRight } from 'react-icons/fa';
 import shapeTwo from '../../assets/shape-2.png';
+import shapeOne from '../../assets/shape-1.png'
 import './services.css';
 
 
@@ -55,7 +56,7 @@ const Services = () => {
                             {description}
                         </p>
 
-                        <a href="" className='link'>
+                        <a href="#pricing" className='link'>
                            See Pricing
                            <FaArrowRight className='link__icon'></FaArrowRight>
                         </a>
@@ -66,6 +67,10 @@ const Services = () => {
                 )
             })}
         </Swiper>
+
+        <div className='section__deco deco__left'>
+            <img src={shapeOne} alt='' className='shape' />
+        </div>
     </section>
   )
 }
