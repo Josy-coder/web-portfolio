@@ -42,8 +42,8 @@
 
   --second-font: 'Caveat', cursive;
 
-  --biggest-font-size: 70px;
-  --h1-font-size: 44px;
+  --biggest-font-size: clamp(2.1875rem, 1.4583rem + 3.3333vw, 4.375rem);
+  --h1-font-size: clamp(1.75rem, 1.4167rem + 1.5238vw, 2.75rem);
   --h2-font-size: 30px;
   --h3-font-size: 28px;
   --h4-font-size: 24px;
