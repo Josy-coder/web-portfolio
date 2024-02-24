@@ -91,6 +91,10 @@
   opacity: 1;
 }
 
+.light-theme .bg__title {
+  color: rgba(0, 0, 0, 0.04);
+}
+
 .main {
   overflow: hidden;
 }
