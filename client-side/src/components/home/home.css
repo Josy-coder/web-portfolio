@@ -1,9 +1,11 @@
 .home {
     background-image: var(--first-gradient);
-    min-height: 100vh;
-    display: grid;
-    align-items: center;
     padding-bottom: 180px;
+}
+
+.home,
+.home__container {
+    position: relative;
 }
 
 .home__wrapper {

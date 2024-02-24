@@ -21,7 +21,7 @@ const Testimonials = () => {
                 clickable: true
             }}
             slidesPerView={1}
-            spaceBetween={10}
+            spaceBetween={30}
             breakpoints={{
                 540: {
                     slidesPerView: 1,
@@ -71,6 +71,10 @@ const Testimonials = () => {
         <div className='section__deco deco__right'>
             <img src={shapeOne} alt='' className='shape' />
         </div>
+
+        <div className='section__bg-wrapper'>
+                <span className='bg__title'>Reviews</span>
+            </div>
     </section>
   )
 }

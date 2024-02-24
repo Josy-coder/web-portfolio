@@ -346,3 +346,20 @@ img {
 .deco__right .shape {
   right: -170px;
 }
+
+.section__bg-wrapper {
+  position: absolute;
+  bottom: 148px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bg__title {
+  font-size: clamp(15.625rem, 13.5417rem + 9.5238vw, 21.875rem);
+  font-family: var(--second-font);
+  font-weight: 700;
+  white-space: nowrap;
+  line-height: 1px;
+  color: rgba(255, 255, 255, 0.02);
+}
+

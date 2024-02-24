@@ -1,5 +1,4 @@
 import { FaArrowRight, FaCheck } from "react-icons/fa";
-import shapeOne from '../../assets/shape-1.png';
 import shapeTwo from '../../assets/shape-2.png';
 import "./pricing.css";
 
@@ -132,6 +131,10 @@ const Pricing = () => {
             <img src={shapeTwo} alt="" className="shape c__shape" />
         </div>
        </div>
+
+       <div className='section__bg-wrapper'>
+                <span className='bg__title'>Pricing</span>
+            </div>
     </section>
   )
 }

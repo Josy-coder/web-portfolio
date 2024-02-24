@@ -42,7 +42,7 @@
     }
 
     .home__container {
-        padding-top: 250px;
+        padding-top: 140px;
     }
 
     .home__subtitle,
@@ -190,6 +190,7 @@
     .home__img-wrapper {
         margin-top: 120px;
         max-width: 400px;
+        z-index: 1;
     }
 
     .home__data {
@@ -242,5 +243,90 @@
         bottom: -8px;
     }
 
-    
+
+}
+
+@media screen and (max-width: 576px) {
+    .show-menu {
+        width: 100%;
+    }
+
+    .nav__btns {
+        column-gap: 24px;
+    }
+
+    .home__img-wrapper {
+        margin-top: 100px;
+    }
+
+    .resume__header {
+        padding: 28px 24px;
+    }
+
+    .resume__content {
+        padding-inline: 24px 30px;
+    }
+
+    .resume__date-title {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 4px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .nav__data {
+        padding: 80px 0 0 90px;
+    }
+
+    .header__deco {
+        left: 40px;
+    }
+
+    .home__img-wrapper {
+        margin-top: 80px;
+    }
+
+    .home__data {
+        transform: scale(0.5);
+    }
+
+    .home__data-one {
+        bottom: 18%;
+        left: -18%;
+    }
+    .home__data-two {
+        bottom: 0;
+        right: -12%;
+    }
+
+    .card,
+    .card-two {
+        padding: 24px;
+    }
+
+    .skills__title,
+    .skills__description {
+        padding-inline: 16px;
+    }
+
+    .portfolio__img {
+        height: 180px;
+    }
+
+    .resume__header {
+        padding: 24px 18px;
+    }
+
+    .resume__content {
+        padding-inline: 18px 20px;
+    }
+
+    .testimonial__img {
+        height: 140px;
+    }
+
+    .contact__submit {
+        justify-content: center;
+    }
 }

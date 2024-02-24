@@ -1,7 +1,6 @@
 import './skills.css';
 import { skills } from '../../Data';
 import shapeOne from '../../assets/shape-1.png';
-import shapeTwo from '../../assets/shape-2.png';
 
 
 const Skills = () => {
@@ -42,6 +41,10 @@ const Skills = () => {
         <div className='section__deco deco__left'>
             <img src={shapeOne} alt='' className='shape' />
         </div>
+
+        <div className='section__bg-wrapper'>
+                <span className='bg__title'>Skills</span>
+            </div>
     </section>
   )
 }
