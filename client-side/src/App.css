@@ -90,6 +90,12 @@
   overflow: hidden;
 }
 
+.container {
+  max-width: 1300px;
+  padding-inline: 12px !important;
+  margin-inline: auto;
+}
+
 html {
   scroll-behavior: smooth;
 }

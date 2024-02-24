@@ -23,7 +23,7 @@ const Services = () => {
                 clickable: true
             }}
             slidesPerView={1}
-            spaceBetween={10}
+            spaceBetween={30}
             breakpoints={{
                 540: {
                     slidesPerView: 1,
