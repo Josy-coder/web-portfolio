@@ -12,7 +12,6 @@
   /* Background colors */
   --bg-color: hsl(216, 18%, 16%);
   --bg-color-alt: hsl(213, 10%, 21%);
-
   /* Color for containers */
   --container-color: hsl(217, 18%, 14%);
 
@@ -92,7 +91,7 @@
 }
 
 .light-theme .bg__title {
-  color: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.03);
 }
 
 .main {
