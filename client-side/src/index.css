@@ -42,7 +42,7 @@
     }
 
     .home__container {
-        padding-top: 140px;
+        padding-top: 300px;
     }
 
     .home__subtitle,
@@ -61,7 +61,7 @@
         transform: initial;
         right: initial;
         margin-inline: auto;
-        margin-top: 200px;
+        margin-top: 90px;
     }
 
     .home__socials,
