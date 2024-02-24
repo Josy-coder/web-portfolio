@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-scroll';
 import { animateScroll } from 'react-scroll';
 import shapeOne from '../../assets/shape-1.png';
+import darkLogo from '../../assets/logo/2.svg';
+import lightLogo from '../../assets/logo/1.svg';
 
 
 const getStorageTheme = () => {
@@ -59,12 +61,12 @@ const Header = () => {
     return (
     <header className={`${scrollNav ? 'scroll-header' : ''} header`}>
         <nav className='nav'>
-            <Link 
+            <Link
                 to='/'
                 onClick={scrollTop}
                 className='nav__logo text-cs'
             >
-                Joselyto
+                <img src={`${theme === 'light-theme' ? lightLogo : darkLogo}`} alt='logo' width={42} height={50} />
             </Link>
 
             <div
@@ -75,7 +77,7 @@ const Header = () => {
                         {links.map(({name, path}, index) => {
                             return (
                                 <li className='nav__item' key={index}>
-                                    <Link 
+                                    <Link
                                         to={path}
                                         offset={-150}
                                         spy={true}
