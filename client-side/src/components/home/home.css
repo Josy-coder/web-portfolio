@@ -4,6 +4,7 @@
 }
 
 .home,
+.home__wrapper,
 .home__container {
     position: relative;
 }
