@@ -74,20 +74,18 @@ const Home = () => {
                     Tech Enthusiast coding with pure zest. Dream? Having my own startup—some day. Sci-fi movies are my escape pods, and books are my DIY movies. Jamming to 21 Pilots, Imagine Dragons, and secretly wishing Sia could narrate my life.
                     </p>
 
-                    <div className='home__socials'>
-
-                        <a href="" className='home__social-link'>
-                            <FaLinkedinIn />
+                    <div className="home__socials">
+                        <a href="" className="home__social-link">
+                            <FaLinkedinIn/>
                         </a>
 
-                        <a href="" className='home__social-link'>
+                        <a href="" className="home__social-link">
                             <FaDiscord />
                         </a>
 
-                        <a href="" className='home__social-link'>
+                        <a href="" className="home__social-link">
                             <FaTelegramPlane />
                         </a>
-
                     </div>
 
                     <div className='home__btns'>
