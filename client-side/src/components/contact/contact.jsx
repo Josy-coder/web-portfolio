@@ -106,6 +106,7 @@ const Contact = () => {
                             onChange={handleChange}
                             className='contact__form-input'
                             type='text'
+                            required
                         />
                     </div>
 
@@ -119,6 +120,7 @@ const Contact = () => {
                             value={form.email}
                             className='contact__form-input'
                             type='email'
+                            required
                         />
                     </div>
                 </div>
@@ -133,6 +135,7 @@ const Contact = () => {
                             value={form.subject}
                             className='contact__form-input'
                             type='text'
+                            required
                         />
                     </div>
 
@@ -145,6 +148,7 @@ const Contact = () => {
                             onChange={handleChange}
                             value={form.message}
                             className='contact__form-input'
+                            required
                         >
 
                         </textarea>
