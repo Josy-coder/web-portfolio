@@ -6,12 +6,24 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "db:generate": "prisma generate"
   },
   "dependencies": {
+    "@prisma/client": "^6.16.1",
+    "@tanstack/react-query": "^5.87.4",
+    "@vercel/blob": "^1.1.1",
+    "@vercel/postgres": "^0.10.0",
+    "next": "15.5.3",
+    "prisma": "^6.16.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.2"
+    "react-markdown": "^10.1.0",
+    "rehype-highlight": "^7.0.2",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "typescript": "^5",
@@ -21,7 +33,7 @@
     "@tailwindcss/postcss": "^4",
     "tailwindcss": "^4",
     "eslint": "^9",
-    "eslint-config-next": "15.5.2",
+    "eslint-config-next": "15.5.3",
     "@eslint/eslintrc": "^3"
   }
 }

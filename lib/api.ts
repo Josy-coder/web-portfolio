@@ -1,0 +1,211 @@
+import { Blog, Project } from '@/types'
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
+
+export interface BlogsResponse {
+    blogs: Blog[]
+    pagination: {
+        page: number
+        limit: number
+        total: number
+        pages: number
+    }
+}
+
+export interface ProjectsResponse {
+    projects: Project[]
+    pagination: {
+        page: number
+        limit: number
+        total: number
+        pages: number
+    }
+}
+
+export async function fetchBlogs(page: number = 1, limit: number = 9): Promise<BlogsResponse> {
+    const response = await fetch(`${BASE_URL}/api/blogs?page=${page}&limit=${limit}`)
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch blogs')
+    }
+
+    return response.json()
+}
+
+export async function fetchFeaturedBlogs(limit: number = 2): Promise<BlogsResponse> {
+    const response = await fetch(`${BASE_URL}/api/blogs?featured=true&limit=${limit}`)
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch featured blogs')
+    }
+
+    return response.json()
+}
+
+export async function fetchBlogBySlug(slug: string): Promise<Blog> {
+    const response = await fetch(`${BASE_URL}/api/blogs/${slug}`)
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch blog')
+    }
+
+    return response.json()
+}
+
+export async function createBlog(data: Partial<Blog>, adminKey: string): Promise<Blog> {
+    const response = await fetch(`${BASE_URL}/api/blogs`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-admin-key': adminKey
+        },
+        body: JSON.stringify(data)
+    })
+
+    if (!response.ok) {
+        throw new Error('Failed to create blog')
+    }
+
+    return response.json()
+}
+
+export async function updateBlog(slug: string, data: Partial<Blog>, adminKey: string): Promise<Blog> {
+    const response = await fetch(`${BASE_URL}/api/blogs/${slug}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-admin-key': adminKey
+        },
+        body: JSON.stringify(data)
+    })
+
+    if (!response.ok) {
+        throw new Error('Failed to update blog')
+    }
+
+    return response.json()
+}
+
+export async function deleteBlog(slug: string, adminKey: string): Promise<void> {
+    const response = await fetch(`${BASE_URL}/api/blogs/${slug}`, {
+        method: 'DELETE',
+        headers: {
+            'x-admin-key': adminKey
+        }
+    })
+
+    if (!response.ok) {
+        throw new Error('Failed to delete blog')
+    }
+}
+
+export async function deleteBlogs(ids: string[], adminKey: string): Promise<{ success: boolean; deleted: number }> {
+    const response = await fetch(`${BASE_URL}/api/blogs`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-admin-key': adminKey
+        },
+        body: JSON.stringify({ ids })
+    })
+
+    if (!response.ok) {
+        throw new Error('Failed to delete blogs')
+    }
+
+    return response.json()
+}
+
+export async function fetchProjects(page: number = 1, limit: number = 9): Promise<ProjectsResponse> {
+    const response = await fetch(`${BASE_URL}/api/projects?page=${page}&limit=${limit}`)
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch projects')
+    }
+
+    return response.json()
+}
+
+export async function fetchFeaturedProjects(limit: number = 2): Promise<ProjectsResponse> {
+    const response = await fetch(`${BASE_URL}/api/projects?featured=true&limit=${limit}`)
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch featured projects')
+    }
+
+    return response.json()
+}
+
+export async function fetchProjectById(id: string): Promise<Project> {
+    const response = await fetch(`${BASE_URL}/api/projects/${id}`)
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch project')
+    }
+
+    return response.json()
+}
+
+export async function createProject(data: Partial<Project>, adminKey: string): Promise<Project> {
+    const response = await fetch(`${BASE_URL}/api/projects`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-admin-key': adminKey
+        },
+        body: JSON.stringify(data)
+    })
+
+    if (!response.ok) {
+        throw new Error('Failed to create project')
+    }
+
+    return response.json()
+}
+
+export async function updateProject(id: string, data: Partial<Project>, adminKey: string): Promise<Project> {
+    const response = await fetch(`${BASE_URL}/api/projects/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-admin-key': adminKey
+        },
+        body: JSON.stringify(data)
+    })
+
+    if (!response.ok) {
+        throw new Error('Failed to update project')
+    }
+
+    return response.json()
+}
+
+export async function deleteProject(id: string, adminKey: string): Promise<void> {
+    const response = await fetch(`${BASE_URL}/api/projects/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'x-admin-key': adminKey
+        }
+    })
+
+    if (!response.ok) {
+        throw new Error('Failed to delete project')
+    }
+}
+
+export async function deleteProjects(ids: string[], adminKey: string): Promise<{ success: boolean; deleted: number }> {
+    const response = await fetch(`${BASE_URL}/api/projects`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-admin-key': adminKey
+        },
+        body: JSON.stringify({ ids })
+    })
+
+    if (!response.ok) {
+        throw new Error('Failed to delete projects')
+    }
+
+    return response.json()
+}
