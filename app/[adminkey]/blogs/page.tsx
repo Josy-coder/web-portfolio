@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useParams, useSearchParams } from 'next/navigation'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import Link from 'next/link'
@@ -18,7 +18,7 @@ function formatDate(date: Date | string): string {
     }).format(dateObj)
 }
 
-export default function AdminBlogsPage() {
+function AdminBlogsContent() {
     const params = useParams()
     const searchParams = useSearchParams()
     const queryClient = useQueryClient()
@@ -256,5 +256,20 @@ export default function AdminBlogsPage() {
                 </div>
             )}
         </div>
+    )
+}
+
+export default function AdminBlogsPage() {
+    return (
+        <Suspense fallback={
+            <div className="flex items-center justify-center py-12">
+                <div className="text-center">
+                    <div className="text-4xl mb-4 animate-bounce">📚</div>
+                    <p className="text-foreground/60">Loading blogs...</p>
+                </div>
+            </div>
+        }>
+            <AdminBlogsContent />
+        </Suspense>
     )
 }

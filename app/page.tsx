@@ -47,7 +47,7 @@ export default function HomePage() {
 
     const { data: blogsData } = useQuery({
         queryKey: ['featured-blogs'],
-        queryFn: () => fetchFeaturedBlogs(2)
+        queryFn: () => fetchFeaturedBlogs(1)
     })
 
     const { data: projectsData } = useQuery({

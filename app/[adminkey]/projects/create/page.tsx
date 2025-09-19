@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation'
 import { useMutation } from '@tanstack/react-query'
 import { createProject } from '@/lib/api'
 import { Project } from '@/types'
+import ImageUpload from '@/components/ImageUpload'
 
 export default function CreateProjectPage() {
     const params = useParams()
@@ -17,7 +18,7 @@ export default function CreateProjectPage() {
         technologies: '',
         demoUrl: '',
         githubUrl: '',
-        images: '',
+        images: [] as string[],
         goal: '',
         challenges: '',
         lessons: '',
@@ -38,7 +39,7 @@ export default function CreateProjectPage() {
         const projectData = {
             ...formData,
             technologies: formData.technologies.split(',').map(tech => tech.trim()).filter(Boolean),
-            images: formData.images.split(',').map(img => img.trim()).filter(Boolean)
+            images: formData.images
         }
 
         createMutation.mutate(projectData)
@@ -147,19 +148,16 @@ export default function CreateProjectPage() {
 
                 {/* Images */}
                 <div>
-                    <label htmlFor="images" className="block text-sm font-medium mb-2">
+                    <label className="block text-sm font-medium mb-2">
                         Project Images
                     </label>
-                    <input
-                        type="text"
-                        id="images"
-                        name="images"
-                        value={formData.images}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-foreground/5 border border-foreground/10 rounded-lg focus:outline-none focus:border-foreground/30 transition-colors"
-                        placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg"
+                    <ImageUpload
+                        multiple
+                        currentImages={formData.images}
+                        onImagesChange={(images) => setFormData(prev => ({ ...prev, images }))}
+                        placeholder="Upload project images (up to 5)"
+                        maxImages={5}
                     />
-                    <p className="text-xs text-foreground/50 mt-1">Separate image URLs with commas</p>
                 </div>
 
                 {/* Goal */}

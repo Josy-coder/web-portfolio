@@ -209,3 +209,39 @@ export async function deleteProjects(ids: string[], adminKey: string): Promise<{
 
     return response.json()
 }
+
+// Image Upload Functions
+export interface UploadResponse {
+    url: string
+}
+
+export async function uploadImage(file: File, oldUrl?: string): Promise<UploadResponse> {
+    const filename = `${Date.now()}-${file.name}`
+    const url = `/api/upload?filename=${encodeURIComponent(filename)}${oldUrl ? `&oldUrl=${encodeURIComponent(oldUrl)}` : ''}`
+
+    const response = await fetch(url, {
+        method: 'POST',
+        body: file,
+        headers: {
+            'Content-Type': file.type,
+        },
+    })
+
+    if (!response.ok) {
+        throw new Error('Failed to upload image')
+    }
+
+    return response.json()
+}
+
+export async function deleteImage(url: string): Promise<{ success: boolean }> {
+    const response = await fetch(`/api/upload?url=${encodeURIComponent(url)}`, {
+        method: 'DELETE',
+    })
+
+    if (!response.ok) {
+        throw new Error('Failed to delete image')
+    }
+
+    return response.json()
+}

@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation'
 import { fetchBlogs } from '@/lib/api'
 import { Blog } from '@/types'
 import Pagination from '@/components/Pagination'
+import { Suspense } from 'react'
 
 function formatDate(date: Date | string): string {
     const dateObj = typeof date === 'string' ? new Date(date) : date
@@ -17,7 +18,7 @@ function formatDate(date: Date | string): string {
     }).format(dateObj)
 }
 
-export default function BlogPage() {
+function BlogContent() {
     const searchParams = useSearchParams()
     const currentPage = Number(searchParams.get('page')) || 1
 
@@ -160,5 +161,20 @@ export default function BlogPage() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export default function BlogPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+                <div className="text-center">
+                    <div className="text-6xl mb-4 animate-bounce">📚</div>
+                    <p className="text-foreground/60">Loading blogs...</p>
+                </div>
+            </div>
+        }>
+            <BlogContent />
+        </Suspense>
     )
 }

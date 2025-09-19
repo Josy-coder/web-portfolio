@@ -7,8 +7,9 @@ import { useSearchParams } from 'next/navigation'
 import { fetchProjects } from '../../lib/api'
 import { Project } from '../../types'
 import Pagination from '../../components/Pagination'
+import { Suspense } from 'react'
 
-export default function ProjectsPage() {
+function ProjectsContent() {
     const searchParams = useSearchParams()
     const currentPage = Number(searchParams.get('page')) || 1
 
@@ -171,5 +172,20 @@ export default function ProjectsPage() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export default function ProjectsPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+                <div className="text-center">
+                    <div className="text-6xl mb-4 animate-bounce">🚀</div>
+                    <p className="text-foreground/60">Loading projects...</p>
+                </div>
+            </div>
+        }>
+            <ProjectsContent />
+        </Suspense>
     )
 }

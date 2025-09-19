@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useParams, useSearchParams } from 'next/navigation'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import Link from 'next/link'
@@ -9,7 +9,7 @@ import { Project } from '../../../types'
 import { fetchProjects, deleteProjects } from '../../../lib/api'
 import Pagination from '../../../components/Pagination'
 
-export default function AdminProjectsPage() {
+function AdminProjectsContent() {
     const params = useParams()
     const searchParams = useSearchParams()
     const queryClient = useQueryClient()
@@ -249,5 +249,20 @@ export default function AdminProjectsPage() {
                 </div>
             )}
         </div>
+    )
+}
+
+export default function AdminProjectsPage() {
+    return (
+        <Suspense fallback={
+            <div className="flex items-center justify-center py-12">
+                <div className="text-center">
+                    <div className="text-4xl mb-4 animate-bounce">🚀</div>
+                    <p className="text-foreground/60">Loading projects...</p>
+                </div>
+            </div>
+        }>
+            <AdminProjectsContent />
+        </Suspense>
     )
 }

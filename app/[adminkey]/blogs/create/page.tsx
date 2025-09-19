@@ -5,6 +5,8 @@ import { useParams, useRouter } from 'next/navigation'
 import { useMutation } from '@tanstack/react-query'
 import { createBlog } from '@/lib/api'
 import { Blog } from '@/types'
+import MarkdownEditor from '@/components/MarkdownEditor'
+import ImageUpload from '@/components/ImageUpload'
 
 export default function CreateBlogPage() {
     const params = useParams()
@@ -112,14 +114,9 @@ export default function CreateBlogPage() {
                     <label htmlFor="content" className="block text-sm font-medium mb-2">
                         Content (Markdown supported) *
                     </label>
-                    <textarea
-                        id="content"
-                        name="content"
-                        required
+                    <MarkdownEditor
                         value={formData.content}
-                        onChange={handleChange}
-                        rows={20}
-                        className="w-full px-4 py-3 bg-foreground/5 border border-foreground/10 rounded-lg focus:outline-none focus:border-foreground/30 transition-colors font-mono text-sm resize-y"
+                        onChange={(value) => setFormData(prev => ({ ...prev, content: value }))}
                         placeholder="Write your blog content in Markdown...
 
 # Heading 1
@@ -137,25 +134,19 @@ const code = 'example';
 > Blockquote text
 
 [Link text](https://example.com)"
+                        height={500}
                     />
-                    <p className="text-xs text-foreground/50 mt-1">
-                        Supports Markdown formatting, code blocks, images, and HTML
-                    </p>
                 </div>
 
                 {/* Featured Image */}
                 <div>
-                    <label htmlFor="featuredImage" className="block text-sm font-medium mb-2">
-                        Featured Image URL
+                    <label className="block text-sm font-medium mb-2">
+                        Featured Image
                     </label>
-                    <input
-                        type="url"
-                        id="featuredImage"
-                        name="featuredImage"
-                        value={formData.featuredImage}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-foreground/5 border border-foreground/10 rounded-lg focus:outline-none focus:border-foreground/30 transition-colors"
-                        placeholder="https://example.com/image.jpg"
+                    <ImageUpload
+                        currentImage={formData.featuredImage}
+                        onImageChange={(url) => setFormData(prev => ({ ...prev, featuredImage: url || '' }))}
+                        placeholder="Upload a featured image for your blog post"
                     />
                 </div>
 
