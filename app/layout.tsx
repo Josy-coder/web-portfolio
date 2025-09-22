@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import QueryProvider from "@/components/QueryProvider";
 import React from "react";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
             <Navbar />
             <main className="pt-20">
                 {children}
+                <SpeedInsights />
             </main>
         </QueryProvider>
         </body>
