@@ -1,7 +1,5 @@
 import { Blog, Project, Career, CreateCareerData, UpdateCareerData } from '@/types'
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
-
 export interface BlogsResponse {
     blogs: Blog[]
     pagination: {
@@ -23,7 +21,7 @@ export interface ProjectsResponse {
 }
 
 export async function fetchBlogs(page: number = 1, limit: number = 9): Promise<BlogsResponse> {
-    const response = await fetch(`${BASE_URL}/api/blogs?page=${page}&limit=${limit}`)
+    const response = await fetch(`/api/blogs?page=${page}&limit=${limit}`)
 
     if (!response.ok) {
         throw new Error('Failed to fetch blogs')
@@ -33,7 +31,7 @@ export async function fetchBlogs(page: number = 1, limit: number = 9): Promise<B
 }
 
 export async function fetchFeaturedBlogs(limit: number = 2): Promise<BlogsResponse> {
-    const response = await fetch(`${BASE_URL}/api/blogs?featured=true&limit=${limit}`)
+    const response = await fetch(`/api/blogs?featured=true&limit=${limit}`)
 
     if (!response.ok) {
         throw new Error('Failed to fetch featured blogs')
@@ -43,7 +41,7 @@ export async function fetchFeaturedBlogs(limit: number = 2): Promise<BlogsRespon
 }
 
 export async function fetchBlogBySlug(slug: string): Promise<Blog> {
-    const response = await fetch(`${BASE_URL}/api/blogs/${slug}`)
+    const response = await fetch(`/api/blogs/${slug}`)
 
     if (!response.ok) {
         throw new Error('Failed to fetch blog')
@@ -53,7 +51,7 @@ export async function fetchBlogBySlug(slug: string): Promise<Blog> {
 }
 
 export async function createBlog(data: Partial<Blog>, adminKey: string): Promise<Blog> {
-    const response = await fetch(`${BASE_URL}/api/blogs`, {
+    const response = await fetch(`/api/blogs`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -70,7 +68,7 @@ export async function createBlog(data: Partial<Blog>, adminKey: string): Promise
 }
 
 export async function updateBlog(slug: string, data: Partial<Blog>, adminKey: string): Promise<Blog> {
-    const response = await fetch(`${BASE_URL}/api/blogs/${slug}`, {
+    const response = await fetch(`/api/blogs/${slug}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -87,7 +85,7 @@ export async function updateBlog(slug: string, data: Partial<Blog>, adminKey: st
 }
 
 export async function deleteBlog(slug: string, adminKey: string): Promise<void> {
-    const response = await fetch(`${BASE_URL}/api/blogs/${slug}`, {
+    const response = await fetch(`/api/blogs/${slug}`, {
         method: 'DELETE',
         headers: {
             'x-admin-key': adminKey
@@ -100,7 +98,7 @@ export async function deleteBlog(slug: string, adminKey: string): Promise<void> 
 }
 
 export async function deleteBlogs(ids: string[], adminKey: string): Promise<{ success: boolean; deleted: number }> {
-    const response = await fetch(`${BASE_URL}/api/blogs`, {
+    const response = await fetch(`/api/blogs`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -117,7 +115,7 @@ export async function deleteBlogs(ids: string[], adminKey: string): Promise<{ su
 }
 
 export async function fetchProjects(page: number = 1, limit: number = 9): Promise<ProjectsResponse> {
-    const response = await fetch(`${BASE_URL}/api/projects?page=${page}&limit=${limit}`)
+    const response = await fetch(`/api/projects?page=${page}&limit=${limit}`)
 
     if (!response.ok) {
         throw new Error('Failed to fetch projects')
@@ -127,7 +125,7 @@ export async function fetchProjects(page: number = 1, limit: number = 9): Promis
 }
 
 export async function fetchFeaturedProjects(limit: number = 2): Promise<ProjectsResponse> {
-    const response = await fetch(`${BASE_URL}/api/projects?featured=true&limit=${limit}`)
+    const response = await fetch(`/api/projects?featured=true&limit=${limit}`)
 
     if (!response.ok) {
         throw new Error('Failed to fetch featured projects')
@@ -137,7 +135,7 @@ export async function fetchFeaturedProjects(limit: number = 2): Promise<Projects
 }
 
 export async function fetchProjectById(id: string): Promise<Project> {
-    const response = await fetch(`${BASE_URL}/api/projects/${id}`)
+    const response = await fetch(`/api/projects/${id}`)
 
     if (!response.ok) {
         throw new Error('Failed to fetch project')
@@ -147,7 +145,7 @@ export async function fetchProjectById(id: string): Promise<Project> {
 }
 
 export async function createProject(data: Partial<Project>, adminKey: string): Promise<Project> {
-    const response = await fetch(`${BASE_URL}/api/projects`, {
+    const response = await fetch(`/api/projects`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -164,7 +162,7 @@ export async function createProject(data: Partial<Project>, adminKey: string): P
 }
 
 export async function updateProject(id: string, data: Partial<Project>, adminKey: string): Promise<Project> {
-    const response = await fetch(`${BASE_URL}/api/projects/${id}`, {
+    const response = await fetch(`/api/projects/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -181,7 +179,7 @@ export async function updateProject(id: string, data: Partial<Project>, adminKey
 }
 
 export async function deleteProject(id: string, adminKey: string): Promise<void> {
-    const response = await fetch(`${BASE_URL}/api/projects/${id}`, {
+    const response = await fetch(`/api/projects/${id}`, {
         method: 'DELETE',
         headers: {
             'x-admin-key': adminKey
@@ -194,7 +192,7 @@ export async function deleteProject(id: string, adminKey: string): Promise<void>
 }
 
 export async function deleteProjects(ids: string[], adminKey: string): Promise<{ success: boolean; deleted: number }> {
-    const response = await fetch(`${BASE_URL}/api/projects`, {
+    const response = await fetch(`/api/projects`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -248,7 +246,7 @@ export async function deleteImage(url: string): Promise<{ success: boolean }> {
 
 // Career Functions
 export async function fetchCareers(): Promise<Career[]> {
-    const response = await fetch(`${BASE_URL}/api/careers`)
+    const response = await fetch(`/api/careers`)
 
     if (!response.ok) {
         throw new Error('Failed to fetch careers')
@@ -258,7 +256,7 @@ export async function fetchCareers(): Promise<Career[]> {
 }
 
 export async function createCareer(data: CreateCareerData, adminKey: string): Promise<Career> {
-    const response = await fetch(`${BASE_URL}/api/careers`, {
+    const response = await fetch(`/api/careers`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -275,7 +273,7 @@ export async function createCareer(data: CreateCareerData, adminKey: string): Pr
 }
 
 export async function updateCareer(id: string, data: UpdateCareerData, adminKey: string): Promise<Career> {
-    const response = await fetch(`${BASE_URL}/api/careers/${id}`, {
+    const response = await fetch(`/api/careers/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -292,7 +290,7 @@ export async function updateCareer(id: string, data: UpdateCareerData, adminKey:
 }
 
 export async function deleteCareer(id: string, adminKey: string): Promise<void> {
-    const response = await fetch(`${BASE_URL}/api/careers/${id}`, {
+    const response = await fetch(`/api/careers/${id}`, {
         method: 'DELETE',
         headers: {
             'x-admin-key': adminKey
