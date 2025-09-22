@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build": "prisma generate && next build --turbopack",
     "start": "next start",
     "lint": "eslint",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
-    "db:generate": "prisma generate"
+    "db:generate": "prisma generate",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^6.16.1",
