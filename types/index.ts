@@ -48,3 +48,19 @@ export interface ProjectCard {
     githubUrl?: string | null
     images: string[]
 }
+
+export interface Career {
+    id: string
+    title: string
+    company: string
+    location?: string | null
+    startDate: Date
+    endDate?: Date | null
+    current: boolean
+    description?: string | null
+    achievements: string[]
+    technologies: string[]
+    order: number
+    createdAt: Date
+    updatedAt: Date
+}

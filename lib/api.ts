@@ -1,4 +1,4 @@
-import { Blog, Project } from '@/types'
+import { Blog, Project, Career } from '@/types'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -244,4 +244,62 @@ export async function deleteImage(url: string): Promise<{ success: boolean }> {
     }
 
     return response.json()
+}
+
+// Career Functions
+export async function fetchCareers(): Promise<Career[]> {
+    const response = await fetch(`${BASE_URL}/api/careers`)
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch careers')
+    }
+
+    return response.json()
+}
+
+export async function createCareer(data: Partial<Career>, adminKey: string): Promise<Career> {
+    const response = await fetch(`${BASE_URL}/api/careers`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-admin-key': adminKey
+        },
+        body: JSON.stringify(data)
+    })
+
+    if (!response.ok) {
+        throw new Error('Failed to create career')
+    }
+
+    return response.json()
+}
+
+export async function updateCareer(id: string, data: Partial<Career>, adminKey: string): Promise<Career> {
+    const response = await fetch(`${BASE_URL}/api/careers/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-admin-key': adminKey
+        },
+        body: JSON.stringify(data)
+    })
+
+    if (!response.ok) {
+        throw new Error('Failed to update career')
+    }
+
+    return response.json()
+}
+
+export async function deleteCareer(id: string, adminKey: string): Promise<void> {
+    const response = await fetch(`${BASE_URL}/api/careers/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'x-admin-key': adminKey
+        }
+    })
+
+    if (!response.ok) {
+        throw new Error('Failed to delete career')
+    }
 }

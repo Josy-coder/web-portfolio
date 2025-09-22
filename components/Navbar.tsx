@@ -11,9 +11,11 @@ export default function Navbar() {
             <div className="flex items-center justify-between">
                 <Link
                     href="/"
-                    className="font-semibold text-lg hover:text-foreground/80 transition-colors"
+                    className="font-bold text-xl hover:opacity-80 transition-opacity"
                 >
-                    Portfolio
+                    <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                        BKJC
+                    </span>
                 </Link>
 
                 <div className="hidden md:flex items-center space-x-6">

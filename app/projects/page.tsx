@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation'
 import { fetchProjects } from '../../lib/api'
 import { Project } from '../../types'
 import Pagination from '../../components/Pagination'
+import { ProjectGridSkeleton } from '../../components/Skeleton'
 import { Suspense } from 'react'
 
 function ProjectsContent() {
@@ -20,10 +21,19 @@ function ProjectsContent() {
 
     if (isLoading) {
         return (
-            <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
-                <div className="text-center">
-                    <div className="text-6xl mb-4 animate-bounce">🚀</div>
-                    <p className="text-foreground/60">Loading projects...</p>
+            <div className="min-h-screen bg-background text-foreground">
+                <div className="container mx-auto px-6 py-12">
+                    {/* Header */}
+                    <div className="text-center space-y-4 mb-16">
+                        <h1 className="text-4xl lg:text-5xl font-bold">
+                            My <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Projects</span>
+                        </h1>
+                        <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
+                            A collection of projects I've worked on, showcasing different technologies and approaches to solving problems.
+                        </p>
+                    </div>
+
+                    <ProjectGridSkeleton />
                 </div>
             </div>
         )
@@ -55,25 +65,18 @@ function ProjectsContent() {
                     </p>
                 </div>
 
-                {/* Projects Grid */}
+                {/* Projects List */}
                 {projects.length > 0 ? (
                     <>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-                            {projects.map((project: Project) => (
+                        <div className="max-w-4xl mx-auto bg-foreground/5 backdrop-blur-sm border border-foreground/10 rounded-lg overflow-hidden">
+                            {projects.map((project: Project, index) => (
                                 <Link
                                     key={project.id}
                                     href={`/projects/${project.id}`}
-                                    className="group relative bg-foreground/5 backdrop-blur-sm border border-foreground/10 rounded-lg overflow-hidden hover:border-foreground/20 transition-all duration-300 hover:scale-[1.02] flex flex-col"
+                                    className="group flex items-center gap-6 p-6 border-b border-foreground/10 last:border-b-0 hover:bg-foreground/10 transition-all duration-300"
                                 >
-                                    {/* Featured Badge */}
-                                    {project.featured && (
-                                        <div className="absolute top-3 right-3 z-10 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs px-2 py-1 rounded-md">
-                                            Featured
-                                        </div>
-                                    )}
-
                                     {/* Project Image */}
-                                    <div className="h-40 bg-gradient-to-br from-blue-500/10 to-purple-600/10 relative overflow-hidden">
+                                    <div className="w-24 h-24 flex-shrink-0 bg-gradient-to-br from-blue-500/10 to-purple-600/10 rounded-lg overflow-hidden relative">
                                         {project.images.length > 0 ? (
                                             <Image
                                                 src={project.images[0]}
@@ -83,55 +86,57 @@ function ProjectsContent() {
                                             />
                                         ) : (
                                             <div className="w-full h-full flex items-center justify-center">
-                                                <span className="text-5xl opacity-50">🚀</span>
+                                                <span className="text-2xl opacity-50">🚀</span>
+                                            </div>
+                                        )}
+                                        {project.featured && (
+                                            <div className="absolute top-1 right-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs px-1 py-0.5 rounded">
+                                                ★
                                             </div>
                                         )}
                                     </div>
 
                                     {/* Project Content */}
-                                    <div className="p-5 space-y-3 flex flex-col flex-1">
+                                    <div className="flex-1 space-y-3">
                                         <div>
-                                            <h3 className="text-lg font-semibold group-hover:text-foreground/80 transition-colors line-clamp-1">
+                                            <h3 className="text-lg font-semibold group-hover:text-blue-500 transition-colors">
                                                 {project.title}
                                             </h3>
-                                            <p className="text-foreground/60 text-sm mt-2 line-clamp-2">
+                                            <p className="text-foreground/70 text-sm line-clamp-2">
                                                 {project.description}
                                             </p>
                                         </div>
 
                                         {/* Technologies */}
-                                        <div className="flex-1">
-                                            <p className="text-xs text-foreground/50 mb-2">Tech Stack:</p>
-                                            <div className="flex flex-wrap gap-2">
-                                                {project.technologies.slice(0, 4).map((tech) => (
-                                                    <span
-                                                        key={tech}
-                                                        className="text-xs bg-foreground/10 px-2 py-1 rounded-md"
-                                                    >
-                            {tech}
-                          </span>
-                                                ))}
-                                                {project.technologies.length > 4 && (
-                                                    <span className="text-xs text-foreground/50">
-                            +{project.technologies.length - 4}
-                          </span>
-                                                )}
-                                            </div>
+                                        <div className="flex flex-wrap gap-2">
+                                            {project.technologies.slice(0, 6).map((tech) => (
+                                                <span
+                                                    key={tech}
+                                                    className="text-xs bg-foreground/10 px-2 py-1 rounded-md"
+                                                >
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                            {project.technologies.length > 6 && (
+                                                <span className="text-xs text-foreground/50">
+                                                    +{project.technologies.length - 6}
+                                                </span>
+                                            )}
                                         </div>
+                                    </div>
 
-                                        {/* Links */}
-                                        <div className="flex gap-4 pt-2">
-                                            {project.demoUrl && (
-                                                <span className="text-sm text-blue-500 font-medium">
-                          Demo →
-                        </span>
-                                            )}
-                                            {project.githubUrl && (
-                                                <span className="text-sm text-foreground/60 font-medium">
-                          GitHub →
-                        </span>
-                                            )}
-                                        </div>
+                                    {/* Action Links */}
+                                    <div className="flex flex-col gap-2">
+                                        {project.demoUrl && (
+                                            <span className="text-xs bg-blue-500/10 text-blue-500 px-3 py-1 rounded-lg font-medium">
+                                                Demo →
+                                            </span>
+                                        )}
+                                        {project.githubUrl && (
+                                            <span className="text-xs bg-foreground/10 text-foreground/70 px-3 py-1 rounded-lg font-medium">
+                                                Code →
+                                            </span>
+                                        )}
                                     </div>
                                 </Link>
                             ))}
@@ -178,10 +183,17 @@ function ProjectsContent() {
 export default function ProjectsPage() {
     return (
         <Suspense fallback={
-            <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
-                <div className="text-center">
-                    <div className="text-6xl mb-4 animate-bounce">🚀</div>
-                    <p className="text-foreground/60">Loading projects...</p>
+            <div className="min-h-screen bg-background text-foreground">
+                <div className="container mx-auto px-6 py-12">
+                    <div className="text-center space-y-4 mb-16">
+                        <h1 className="text-4xl lg:text-5xl font-bold">
+                            My <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Projects</span>
+                        </h1>
+                        <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
+                            A collection of projects I've worked on, showcasing different technologies and approaches to solving problems.
+                        </p>
+                    </div>
+                    <ProjectGridSkeleton />
                 </div>
             </div>
         }>

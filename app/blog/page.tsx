@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation'
 import { fetchBlogs } from '@/lib/api'
 import { Blog } from '@/types'
 import Pagination from '@/components/Pagination'
+import { BlogGridSkeleton } from '@/components/Skeleton'
 import { Suspense } from 'react'
 
 function formatDate(date: Date | string): string {
@@ -29,10 +30,19 @@ function BlogContent() {
 
     if (isLoading) {
         return (
-            <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
-                <div className="text-center">
-                    <div className="text-6xl mb-4 animate-bounce">📚</div>
-                    <p className="text-foreground/60">Loading blogs...</p>
+            <div className="min-h-screen bg-background text-foreground">
+                <div className="container mx-auto px-6 py-12">
+                    <div className="text-center space-y-4 mb-16">
+                        <h1 className="text-4xl lg:text-5xl font-bold">
+                            My <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Blog</span>
+                        </h1>
+                        <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
+                            Thoughts, insights, and learnings from my journey as a developer.
+                            I write about web development, technology trends, and problem-solving approaches.
+                        </p>
+                    </div>
+
+                    <BlogGridSkeleton />
                 </div>
             </div>
         )
@@ -66,14 +76,15 @@ function BlogContent() {
 
                 {blogs.length > 0 ? (
                     <>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                        <div className="max-w-4xl mx-auto bg-foreground/5 backdrop-blur-sm border border-foreground/10 rounded-lg overflow-hidden">
                             {blogs.map((blog: Blog) => (
                                 <Link
                                     key={blog.id}
                                     href={`/blog/${blog.slug}`}
-                                    className="group bg-foreground/5 backdrop-blur-sm border border-foreground/10 rounded-lg overflow-hidden hover:border-foreground/20 transition-all duration-300 hover:scale-[1.02] flex flex-col"
+                                    className="group flex items-center gap-6 p-6 border-b border-foreground/10 last:border-b-0 hover:bg-foreground/10 transition-all duration-300"
                                 >
-                                    <div className="h-40 relative bg-gradient-to-br from-blue-500/10 to-purple-600/10">
+                                    {/* Blog Image */}
+                                    <div className="w-24 h-24 flex-shrink-0 bg-gradient-to-br from-blue-500/10 to-purple-600/10 rounded-lg overflow-hidden relative">
                                         {blog.featuredImage ? (
                                             <Image
                                                 src={blog.featuredImage}
@@ -83,45 +94,44 @@ function BlogContent() {
                                             />
                                         ) : (
                                             <div className="w-full h-full flex items-center justify-center">
-                                                <span className="text-5xl opacity-50">📝</span>
+                                                <span className="text-2xl opacity-50">📝</span>
                                             </div>
                                         )}
-
                                         {blog.featured && (
-                                            <div className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs px-2 py-1 rounded-md">
-                                                Featured
+                                            <div className="absolute top-1 right-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs px-1 py-0.5 rounded">
+                                                ★
                                             </div>
                                         )}
                                     </div>
 
-                                    <div className="p-5 flex flex-col flex-1">
-                                        <div className="flex items-center gap-2 text-xs text-foreground/60 mb-3">
-                                            <time dateTime={new Date(blog.createdAt).toISOString()}>
-                                                {formatDate(blog.createdAt)}
-                                            </time>
-                                            <span>•</span>
-                                            <span>{blog.tags.length > 0 ? blog.tags[0] : 'Article'}</span>
+                                    {/* Blog Content */}
+                                    <div className="flex-1 space-y-3">
+                                        <div>
+                                            <h3 className="text-lg font-semibold group-hover:text-blue-500 transition-colors line-clamp-1">
+                                                {blog.title}
+                                            </h3>
+                                            {blog.excerpt && (
+                                                <p className="text-foreground/70 text-sm line-clamp-2 mt-1">
+                                                    {blog.excerpt}
+                                                </p>
+                                            )}
                                         </div>
 
-                                        <h3 className="text-lg font-semibold group-hover:text-foreground/80 transition-colors line-clamp-2 mb-2">
-                                            {blog.title}
-                                        </h3>
-
-                                        {blog.excerpt && (
-                                            <p className="text-foreground/60 text-sm line-clamp-3 mb-4 flex-1">
-                                                {blog.excerpt}
-                                            </p>
-                                        )}
-
-                                        <div className="flex flex-wrap gap-2 mt-auto">
-                                            {blog.tags.slice(0, 3).map((tag) => (
-                                                <span
-                                                    key={tag}
-                                                    className="text-xs bg-foreground/10 px-2 py-1 rounded-md"
-                                                >
-                          {tag}
-                        </span>
-                                            ))}
+                                        {/* Tags and Date */}
+                                        <div className="flex items-center gap-4">
+                                            <div className="flex flex-wrap gap-2">
+                                                {blog.tags.slice(0, 3).map((tag) => (
+                                                    <span
+                                                        key={tag}
+                                                        className="text-xs bg-foreground/10 px-2 py-1 rounded-md"
+                                                    >
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                            <time className="text-xs text-foreground/50" dateTime={new Date(blog.createdAt).toISOString()}>
+                                                {formatDate(blog.createdAt)}
+                                            </time>
                                         </div>
                                     </div>
                                 </Link>
@@ -167,10 +177,18 @@ function BlogContent() {
 export default function BlogPage() {
     return (
         <Suspense fallback={
-            <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
-                <div className="text-center">
-                    <div className="text-6xl mb-4 animate-bounce">📚</div>
-                    <p className="text-foreground/60">Loading blogs...</p>
+            <div className="min-h-screen bg-background text-foreground">
+                <div className="container mx-auto px-6 py-12">
+                    <div className="text-center space-y-4 mb-16">
+                        <h1 className="text-4xl lg:text-5xl font-bold">
+                            My <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Blog</span>
+                        </h1>
+                        <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
+                            Thoughts, insights, and learnings from my journey as a developer.
+                            I write about web development, technology trends, and problem-solving approaches.
+                        </p>
+                    </div>
+                    <BlogGridSkeleton />
                 </div>
             </div>
         }>

@@ -49,6 +49,16 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                             >
                                 Projects
                             </Link>
+                            <Link
+                                href={`/${adminKey}/careers`}
+                                className={`px-4 py-2 rounded-lg transition-colors font-medium ${
+                                    isActive('/careers')
+                                        ? 'bg-foreground text-background'
+                                        : 'hover:bg-foreground/10'
+                                }`}
+                            >
+                                Careers
+                            </Link>
                             <div className="mx-2 h-6 w-px bg-foreground/20" />
                             <Link
                                 href="/"
