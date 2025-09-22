@@ -4,12 +4,13 @@ import { prisma } from '@/lib/db'
 // GET /api/blogs/[slug]
 export async function GET(
     request: NextRequest,
-    { params }: { params: { slug: string } }
+    { params }: { params: Promise<{ slug: string }> }
 ) {
     try {
+        const { slug } = await params
         const blog = await prisma.blog.findUnique({
             where: {
-                slug: params.slug,
+                slug: slug,
                 published: true
             }
         })
@@ -35,7 +36,7 @@ export async function GET(
 // Requires 'x-admin-key' header for authentication
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { slug: string } }
+    { params }: { params: Promise<{ slug: string }> }
 ) {
     try {
         const adminKey = request.headers.get('x-admin-key')
@@ -47,16 +48,17 @@ export async function PUT(
             )
         }
 
+        const { slug } = await params
         const body = await request.json()
-        const { title, content, excerpt, slug, featuredImage, tags, published, featured } = body
+        const { title, content, excerpt, slug: newSlug, featuredImage, tags, published, featured } = body
 
         const blog = await prisma.blog.update({
-            where: { slug: params.slug },
+            where: { slug: slug },
             data: {
                 title,
                 content,
                 excerpt,
-                slug,
+                slug: newSlug,
                 featuredImage,
                 tags: tags || [],
                 published: published || false,
@@ -78,7 +80,7 @@ export async function PUT(
 // Requires 'x-admin-key' header for authentication
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { slug: string } }
+    { params }: { params: Promise<{ slug: string }> }
 ) {
     try {
         const adminKey = request.headers.get('x-admin-key')
@@ -90,8 +92,9 @@ export async function DELETE(
             )
         }
 
+        const { slug } = await params
         await prisma.blog.delete({
-            where: { slug: params.slug }
+            where: { slug: slug }
         })
 
         return NextResponse.json({ success: true })

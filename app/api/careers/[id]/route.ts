@@ -4,11 +4,12 @@ import { prisma } from '@/lib/db'
 // GET /api/careers/[id]
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const { id } = await params
         const career = await prisma.career.findUnique({
-            where: { id: params.id }
+            where: { id: id }
         })
 
         if (!career) {
@@ -32,7 +33,7 @@ export async function GET(
 // Requires 'x-admin-key' header for authentication
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         const adminKey = request.headers.get('x-admin-key')
@@ -44,6 +45,7 @@ export async function PUT(
             )
         }
 
+        const { id } = await params
         const body = await request.json()
         const {
             title,
@@ -58,7 +60,7 @@ export async function PUT(
             order
         } = body
 
-        const updateData: any = {}
+        const updateData: Record<string, any> = {}
 
         if (title !== undefined) updateData.title = title
         if (company !== undefined) updateData.company = company
@@ -69,10 +71,10 @@ export async function PUT(
         if (description !== undefined) updateData.description = description
         if (achievements !== undefined) updateData.achievements = achievements
         if (technologies !== undefined) updateData.technologies = technologies
-        if (order !== undefined) updateData.order = order
+        if (order !== undefined) updateData.order = parseInt(order) || 0
 
         const career = await prisma.career.update({
-            where: { id: params.id },
+            where: { id: id },
             data: updateData
         })
 
@@ -90,7 +92,7 @@ export async function PUT(
 // Requires 'x-admin-key' header for authentication
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         const adminKey = request.headers.get('x-admin-key')
@@ -102,8 +104,9 @@ export async function DELETE(
             )
         }
 
+        const { id } = await params
         await prisma.career.delete({
-            where: { id: params.id }
+            where: { id: id }
         })
 
         return NextResponse.json({ success: true })

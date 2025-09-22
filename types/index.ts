@@ -64,3 +64,29 @@ export interface Career {
     createdAt: Date
     updatedAt: Date
 }
+
+export interface CreateCareerData {
+    title: string
+    company: string
+    location?: string
+    startDate: string
+    endDate?: string | null
+    current: boolean
+    description?: string
+    achievements: string[]
+    technologies: string[]
+    order: number
+}
+
+export interface UpdateCareerData {
+    title?: string
+    company?: string
+    location?: string
+    startDate?: string
+    endDate?: string | null
+    current?: boolean
+    description?: string
+    achievements?: string[]
+    technologies?: string[]
+    order?: number
+}

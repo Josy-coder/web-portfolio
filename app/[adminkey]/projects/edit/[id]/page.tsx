@@ -77,19 +77,6 @@ export default function EditProjectPage() {
         }))
     }
 
-    const handleImageUpload = (url: string) => {
-        setFormData(prev => ({
-            ...prev,
-            images: [...prev.images, url]
-        }))
-    }
-
-    const handleImageRemove = (index: number) => {
-        setFormData(prev => ({
-            ...prev,
-            images: prev.images.filter((_, i) => i !== index)
-        }))
-    }
 
     if (isLoading) {
         return (
@@ -209,9 +196,10 @@ export default function EditProjectPage() {
                 <div className="space-y-4">
                     <h2 className="text-xl font-semibold">Images</h2>
                     <ImageUpload
-                        onUpload={handleImageUpload}
-                        images={formData.images}
-                        onRemove={handleImageRemove}
+                        currentImages={formData.images}
+                        onImagesChange={(urls) => setFormData(prev => ({ ...prev, images: urls }))}
+                        multiple={true}
+                        maxImages={5}
                     />
                 </div>
 

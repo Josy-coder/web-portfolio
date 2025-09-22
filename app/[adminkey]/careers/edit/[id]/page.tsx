@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { useQuery, useMutation } from '@tanstack/react-query'
 import { fetchCareers, updateCareer } from '@/lib/api'
-import { Career } from '@/types'
+import { UpdateCareerData } from '@/types'
 
 export default function EditCareerPage() {
     const params = useParams()
@@ -33,7 +33,7 @@ export default function EditCareerPage() {
     const career = careers?.find(c => c.id === careerId)
 
     const updateMutation = useMutation({
-        mutationFn: (data: Partial<Career>) => updateCareer(careerId, data, adminKey),
+        mutationFn: (data: UpdateCareerData) => updateCareer(careerId, data, adminKey),
         onSuccess: () => {
             router.push(`/${adminKey}/careers`)
         }
@@ -101,7 +101,7 @@ export default function EditCareerPage() {
                 <div className="text-6xl mb-4">❓</div>
                 <h2 className="text-xl font-semibold mb-2">Career Entry Not Found</h2>
                 <p className="text-foreground/60 mb-6">
-                    The career entry you're looking for doesn't exist.
+                    The career entry you&#39;re looking for doesn&#39;t exist.
                 </p>
                 <button
                     onClick={() => router.push(`/${adminKey}/careers`)}

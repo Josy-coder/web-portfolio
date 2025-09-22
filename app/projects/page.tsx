@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'next/navigation'
 import { fetchProjects } from '../../lib/api'
@@ -29,7 +28,7 @@ function ProjectsContent() {
                             My <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Projects</span>
                         </h1>
                         <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-                            A collection of projects I've worked on, showcasing different technologies and approaches to solving problems.
+                            A collection of projects I&apos;ve worked on, showcasing different technologies and approaches to solving problems.
                         </p>
                     </div>
 
@@ -61,7 +60,7 @@ function ProjectsContent() {
                         My <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Projects</span>
                     </h1>
                     <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-                        A collection of projects I've worked on, showcasing different technologies and approaches to solving problems.
+                        A collection of projects I&apos;ve worked on, showcasing different technologies and approaches to solving problems.
                     </p>
                 </div>
 
@@ -69,7 +68,7 @@ function ProjectsContent() {
                 {projects.length > 0 ? (
                     <>
                         <div className="max-w-4xl mx-auto bg-foreground/5 backdrop-blur-sm border border-foreground/10 rounded-lg overflow-hidden">
-                            {projects.map((project: Project, index) => (
+                            {projects.map((project: Project) => (
                                 <Link
                                     key={project.id}
                                     href={`/projects/${project.id}`}
@@ -143,7 +142,7 @@ function ProjectsContent() {
                         <div className="text-6xl mb-4">🚧</div>
                         <h3 className="text-xl font-semibold mb-2">No Projects Yet</h3>
                         <p className="text-foreground/60">
-                            I'm working on some exciting projects. Check back soon!
+                            I&apos;m working on some exciting projects. Check back soon!
                         </p>
                     </div>
                 )}
@@ -152,7 +151,7 @@ function ProjectsContent() {
                 <div className="text-center mt-16 space-y-4">
                     <h2 className="text-2xl font-semibold">Like What You See?</h2>
                     <p className="text-foreground/70">
-                        Let's discuss how we can work together on your next project.
+                        Let&apos;s discuss how we can work together on your next project.
                     </p>
                     <Link
                         href="/about"
@@ -176,7 +175,7 @@ export default function ProjectsPage() {
                             My <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Projects</span>
                         </h1>
                         <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-                            A collection of projects I've worked on, showcasing different technologies and approaches to solving problems.
+                            A collection of projects I&apos;ve worked on, showcasing different technologies and approaches to solving problems.
                         </p>
                     </div>
                     <ProjectGridSkeleton />

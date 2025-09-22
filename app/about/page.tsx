@@ -40,7 +40,7 @@ export default function AboutPage() {
                                 Baho Kemana Joselyto Charite
                             </h2>
                             <p className="text-sm text-foreground/80 leading-relaxed">
-                                Based in Rwanda, I'm a developer who believes that great technology without great communication is like a Ferrari with square wheels – technically impressive but going nowhere fast! I hold a Bachelor's in Communications from Southern New Hampshire University, but my journey led me deep into the IT realm, where I discovered my true calling.
+                                Based in Rwanda, I&#39;m a developer who believes that great technology without great communication is like a Ferrari with square wheels – technically impressive but going nowhere fast! I hold a Bachelor&#39;s in Communications from Southern New Hampshire University, but my journey led me deep into the IT realm, where I discovered my true calling.
                             </p>
                         </div>
 
@@ -111,7 +111,7 @@ export default function AboutPage() {
                     <div className="lg:sticky lg:top-6 lg:self-start space-y-4">
                         {/* Contact Card - Smaller */}
                         <div className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-foreground/10 rounded-lg p-4 text-center">
-                            <h2 className="text-base font-semibold mb-2">Let's Connect</h2>
+                            <h2 className="text-base font-semibold mb-2">Let&#39;s Connect</h2>
                             <a
                                 href="mailto:baho.charite@gmail.com"
                                 className="inline-flex items-center gap-2 bg-foreground text-background px-3 py-1.5 rounded-lg hover:bg-foreground/90 transition-colors font-medium text-xs"
@@ -173,7 +173,7 @@ export default function AboutPage() {
                                     <span className="font-medium">Sports:</span> Football (soccer) is my passion. I also enjoy basketball!
                                 </p>
                                 <p>
-                                    <span className="font-medium">Secret Dancer:</span> Got moves when no one's watching.
+                                    <span className="font-medium">Secret Dancer:</span> Got moves when no one&#39;s watching.
                                 </p>
                                 <p>
                                     <span className="font-medium">Gymnastics:</span> I admire it (and know how inflexible I am)!

@@ -78,12 +78,6 @@ export default function EditBlogPage() {
         }))
     }
 
-    const handleImageUpload = (url: string) => {
-        setFormData(prev => ({
-            ...prev,
-            featuredImage: url
-        }))
-    }
 
     if (isLoading) {
         return (
@@ -187,9 +181,8 @@ export default function EditBlogPage() {
                 <div className="space-y-4">
                     <h2 className="text-xl font-semibold">Featured Image</h2>
                     <ImageUpload
-                        onUpload={handleImageUpload}
-                        images={formData.featuredImage ? [formData.featuredImage] : []}
-                        onRemove={() => setFormData(prev => ({ ...prev, featuredImage: '' }))}
+                        currentImage={formData.featuredImage}
+                        onImageChange={(url) => setFormData(prev => ({ ...prev, featuredImage: url || '' }))}
                         maxImages={1}
                     />
                 </div>

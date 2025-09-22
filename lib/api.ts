@@ -1,4 +1,4 @@
-import { Blog, Project, Career } from '@/types'
+import { Blog, Project, Career, CreateCareerData, UpdateCareerData } from '@/types'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!
 
@@ -257,7 +257,7 @@ export async function fetchCareers(): Promise<Career[]> {
     return response.json()
 }
 
-export async function createCareer(data: Partial<Career>, adminKey: string): Promise<Career> {
+export async function createCareer(data: CreateCareerData, adminKey: string): Promise<Career> {
     const response = await fetch(`${BASE_URL}/api/careers`, {
         method: 'POST',
         headers: {
@@ -274,7 +274,7 @@ export async function createCareer(data: Partial<Career>, adminKey: string): Pro
     return response.json()
 }
 
-export async function updateCareer(id: string, data: Partial<Career>, adminKey: string): Promise<Career> {
+export async function updateCareer(id: string, data: UpdateCareerData, adminKey: string): Promise<Career> {
     const response = await fetch(`${BASE_URL}/api/careers/${id}`, {
         method: 'PUT',
         headers: {

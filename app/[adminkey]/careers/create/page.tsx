@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { useMutation } from '@tanstack/react-query'
 import { createCareer } from '@/lib/api'
-import { Career } from '@/types'
+import { CreateCareerData } from '@/types'
 
 export default function CreateCareerPage() {
     const params = useParams()
@@ -25,7 +25,7 @@ export default function CreateCareerPage() {
     })
 
     const createMutation = useMutation({
-        mutationFn: (data: Partial<Career>) => createCareer(data, adminKey),
+        mutationFn: (data: CreateCareerData) => createCareer(data, adminKey),
         onSuccess: () => {
             router.push(`/${adminKey}/careers`)
         }

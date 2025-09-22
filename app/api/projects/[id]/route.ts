@@ -4,12 +4,13 @@ import { prisma } from '@/lib/db'
 // GET /api/projects/[id]
 export async function GET(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const { id } = await params
         const project = await prisma.project.findUnique({
             where: {
-                id: params.id
+                id: id
             }
         })
 
@@ -34,7 +35,7 @@ export async function GET(
 // Requires 'x-admin-key' header for authentication
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         const adminKey = request.headers.get('x-admin-key')
@@ -46,6 +47,7 @@ export async function PUT(
             )
         }
 
+        const { id } = await params
         const body = await request.json()
         const {
             title,
@@ -62,7 +64,7 @@ export async function PUT(
         } = body
 
         const project = await prisma.project.update({
-            where: { id: params.id },
+            where: { id: id },
             data: {
                 title,
                 description,
@@ -92,7 +94,7 @@ export async function PUT(
 // Requires 'x-admin-key' header for authentication
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
         const adminKey = request.headers.get('x-admin-key')
@@ -104,8 +106,9 @@ export async function DELETE(
             )
         }
 
+        const { id } = await params
         await prisma.project.delete({
-            where: { id: params.id }
+            where: { id: id }
         })
 
         return NextResponse.json({ success: true })
