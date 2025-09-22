@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
                 description,
                 achievements: achievements || [],
                 technologies: technologies || [],
-                order: order || 0
+                order: parseInt(order) || 0
             }
         })
 

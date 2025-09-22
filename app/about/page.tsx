@@ -134,7 +134,6 @@ export default function AboutPage() {
                         {/* Tech Arsenal Card */}
                         <div className="bg-foreground/5 backdrop-blur-sm border border-foreground/10 rounded-lg p-4">
                             <h2 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                                <span className="text-xl">⚡</span>
                                 Tech Arsenal
                             </h2>
                             <div className="space-y-3">

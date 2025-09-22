@@ -34,19 +34,14 @@ export default function CreateCareerPage() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
 
-        console.log('=== Client Career Creation Debug ===')
-        console.log('Form data before processing:', formData)
-
         const careerData = {
             ...formData,
             achievements: formData.achievements.split('\n').map(item => item.trim()).filter(Boolean),
             technologies: formData.technologies.split(',').map(tech => tech.trim()).filter(Boolean),
             startDate: formData.startDate,
-            endDate: formData.endDate || null
+            endDate: formData.endDate || null,
+            order: parseInt(formData.order.toString()) || 0
         }
-
-        console.log('Career data being sent to API:', careerData)
-        console.log('Admin key:', adminKey)
 
         createMutation.mutate(careerData)
     }
