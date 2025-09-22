@@ -75,34 +75,20 @@ function ProjectsContent() {
                                     href={`/projects/${project.id}`}
                                     className="group flex items-center gap-6 p-6 border-b border-foreground/10 last:border-b-0 hover:bg-foreground/10 transition-all duration-300"
                                 >
-                                    {/* Project Image */}
-                                    <div className="w-24 h-24 flex-shrink-0 bg-gradient-to-br from-blue-500/10 to-purple-600/10 rounded-lg overflow-hidden relative">
-                                        {project.images.length > 0 ? (
-                                            <Image
-                                                src={project.images[0]}
-                                                alt={project.title}
-                                                fill
-                                                className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                            />
-                                        ) : (
-                                            <div className="w-full h-full flex items-center justify-center">
-                                                <span className="text-2xl opacity-50">🚀</span>
-                                            </div>
-                                        )}
-                                        {project.featured && (
-                                            <div className="absolute top-1 right-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs px-1 py-0.5 rounded">
-                                                ★
-                                            </div>
-                                        )}
-                                    </div>
-
                                     {/* Project Content */}
                                     <div className="flex-1 space-y-3">
                                         <div>
-                                            <h3 className="text-lg font-semibold group-hover:text-blue-500 transition-colors">
-                                                {project.title}
-                                            </h3>
-                                            <p className="text-foreground/70 text-sm line-clamp-2">
+                                            <div className="flex items-center gap-3">
+                                                <h3 className="text-lg font-semibold group-hover:text-blue-500 transition-colors">
+                                                    {project.title}
+                                                </h3>
+                                                {project.featured && (
+                                                    <span className="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                                                        Favorite
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <p className="text-foreground/70 text-sm line-clamp-2 mt-1">
                                                 {project.description}
                                             </p>
                                         </div>

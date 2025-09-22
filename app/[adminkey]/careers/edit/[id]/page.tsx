@@ -1,15 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { useMutation } from '@tanstack/react-query'
-import { createCareer } from '@/lib/api'
+import { useQuery, useMutation } from '@tanstack/react-query'
+import { fetchCareers, updateCareer } from '@/lib/api'
 import { Career } from '@/types'
 
-export default function CreateCareerPage() {
+export default function EditCareerPage() {
     const params = useParams()
     const router = useRouter()
     const adminKey = params.adminkey as string
+    const careerId = params.id as string
 
     const [formData, setFormData] = useState({
         title: '',
@@ -24,18 +25,39 @@ export default function CreateCareerPage() {
         order: 0
     })
 
-    const createMutation = useMutation({
-        mutationFn: (data: Partial<Career>) => createCareer(data, adminKey),
+    const { data: careers, isLoading } = useQuery({
+        queryKey: ['careers'],
+        queryFn: fetchCareers
+    })
+
+    const career = careers?.find(c => c.id === careerId)
+
+    const updateMutation = useMutation({
+        mutationFn: (data: Partial<Career>) => updateCareer(careerId, data, adminKey),
         onSuccess: () => {
             router.push(`/${adminKey}/careers`)
         }
     })
 
+    useEffect(() => {
+        if (career) {
+            setFormData({
+                title: career.title || '',
+                company: career.company || '',
+                location: career.location || '',
+                startDate: career.startDate ? new Date(career.startDate).toISOString().split('T')[0] : '',
+                endDate: career.endDate ? new Date(career.endDate).toISOString().split('T')[0] : '',
+                current: career.current || false,
+                description: career.description || '',
+                achievements: career.achievements ? career.achievements.join('\n') : '',
+                technologies: career.technologies ? career.technologies.join(', ') : '',
+                order: career.order || 0
+            })
+        }
+    }, [career])
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-
-        console.log('=== Client Career Creation Debug ===')
-        console.log('Form data before processing:', formData)
 
         const careerData = {
             ...formData,
@@ -45,10 +67,7 @@ export default function CreateCareerPage() {
             endDate: formData.endDate || null
         }
 
-        console.log('Career data being sent to API:', careerData)
-        console.log('Admin key:', adminKey)
-
-        createMutation.mutate(careerData)
+        updateMutation.mutate(careerData)
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -59,12 +78,46 @@ export default function CreateCareerPage() {
         }))
     }
 
+    if (isLoading) {
+        return (
+            <div className="max-w-2xl mx-auto">
+                <div className="animate-pulse space-y-6">
+                    <div className="h-8 bg-foreground/20 rounded w-1/3"></div>
+                    <div className="h-4 bg-foreground/10 rounded w-2/3"></div>
+                    <div className="space-y-4">
+                        <div className="h-10 bg-foreground/20 rounded"></div>
+                        <div className="h-20 bg-foreground/20 rounded"></div>
+                        <div className="h-10 bg-foreground/20 rounded"></div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    if (!career) {
+        return (
+            <div className="max-w-2xl mx-auto text-center py-16">
+                <div className="text-6xl mb-4">❓</div>
+                <h2 className="text-xl font-semibold mb-2">Career Entry Not Found</h2>
+                <p className="text-foreground/60 mb-6">
+                    The career entry you're looking for doesn't exist.
+                </p>
+                <button
+                    onClick={() => router.push(`/${adminKey}/careers`)}
+                    className="bg-foreground text-background px-6 py-3 rounded-lg hover:bg-foreground/90 transition-colors font-medium"
+                >
+                    Back to Careers
+                </button>
+            </div>
+        )
+    }
+
     return (
         <div className="max-w-2xl mx-auto">
             <div className="mb-8">
-                <h1 className="text-3xl font-bold mb-2">Add Career Entry</h1>
+                <h1 className="text-3xl font-bold mb-2">Edit Career Entry</h1>
                 <p className="text-foreground/60">
-                    Add a new entry to your professional career history.
+                    Update your professional career information.
                 </p>
             </div>
 
@@ -262,17 +315,17 @@ export default function CreateCareerPage() {
                     </button>
                     <button
                         type="submit"
-                        disabled={createMutation.isPending}
+                        disabled={updateMutation.isPending}
                         className="flex-1 bg-foreground text-background px-6 py-3 rounded-lg hover:bg-foreground/90 transition-colors font-medium disabled:opacity-50"
                     >
-                        {createMutation.isPending ? 'Creating...' : 'Create Career Entry'}
+                        {updateMutation.isPending ? 'Updating...' : 'Update Career Entry'}
                     </button>
                 </div>
 
-                {createMutation.error && (
+                {updateMutation.error && (
                     <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
                         <p className="text-red-500 text-sm">
-                            Error creating career entry. Please try again.
+                            Error updating career entry. Please try again.
                         </p>
                     </div>
                 )}

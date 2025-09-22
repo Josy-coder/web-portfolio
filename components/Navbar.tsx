@@ -13,7 +13,7 @@ export default function Navbar() {
                     href="/"
                     className="font-bold text-xl hover:opacity-80 transition-opacity"
                 >
-                    <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent px-2">
                         BKJC
                     </span>
                 </Link>

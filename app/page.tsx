@@ -52,7 +52,7 @@ export default function HomePage() {
 
     const { data: projectsData } = useQuery({
         queryKey: ['featured-projects'],
-        queryFn: () => fetchFeaturedProjects(2)
+        queryFn: () => fetchFeaturedProjects(1)
     })
 
     const featuredBlogs = blogsData?.blogs || []
@@ -63,13 +63,12 @@ export default function HomePage() {
             <div className="container mx-auto px-6 py-12">
                 <div className="grid lg:grid-cols-2 gap-12 min-h-[calc(100vh-8rem)] items-center">
 
-                    {/* Left Side - Introduction & Quote */}
                     <div className="space-y-8">
                         <div className="space-y-6">
                             <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
                                 Hi, I&#39;m{' '}
                                 <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                  Developer
+                  Joselyto
                 </span>
                             </h1>
 
